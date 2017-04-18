@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/decideur/ministre/_LayoutWeb.cshtml";
+}
+  <section class="content">
+    <div class="row">
+
+        <!-- Left col -->
+        <section class="col-lg-7 connectedSortable">
+            <!-- Custom tabs (Charts with tabs)-->
+            @Html.Partial("~/Views/Ministre/bar/dimArr.cshtml")
+            @Html.Partial("~/Views/Ministre/bar/dimCommune.cshtml")
+            @Html.Partial("~/Views/Shared/decideur/tous/email.cshtml")
+           
+        </section>
+
+        <!-- right col (We are only adding the ID to make the widgets sortable)-->
+        <section class="col-lg-5 connectedSortable">
+            @Html.Partial("~/Views/Ministre/bar/dimGouv.cshtml")
+            @Html.Partial("~/Views/Ministre/bar/dimDate.cshtml")
+            @Html.Partial("~/Views/Shared/decideur/tous/calender.cshtml")
+          
+            <!-- /.box -->
+        </section>
+
+    </div>
+    
+
+    </section>

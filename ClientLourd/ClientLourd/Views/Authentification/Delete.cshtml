@@ -1,0 +1,48 @@
+﻿@model ClientLourd.Models.Authentification
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Authentification</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.pseudo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.pseudo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.mdp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.mdp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.idDecideur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.idDecideur)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
