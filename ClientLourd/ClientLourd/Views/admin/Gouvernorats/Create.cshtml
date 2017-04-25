@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/admin/_LayoutAdmin.cshtml";
 }
 
 <h2>Create</h2>
@@ -19,7 +20,7 @@
 
         <div class="form-group">
             @Html.LabelFor(model => model.nomfr, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+            <div class="col-xs-3">
                 @Html.EditorFor(model => model.nomfr, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.nomfr, "", new { @class = "text-danger" })
             </div>

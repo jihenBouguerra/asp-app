@@ -1,28 +1,39 @@
 ﻿@{
     Layout = "~/Views/Shared/decideur/ministre/_LayoutWeb.cshtml";
 }
-  <section class="content">
-    <div class="row">
+<section class="content-header">
+    <h1>
+        Dashboard
+        <small>Budget à realiser</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li class="active">Dashboard</li>
+    </ol>
+</section>
 
-        <!-- Left col -->
-        <section class="col-lg-7 connectedSortable">
-            <!-- Custom tabs (Charts with tabs)-->
-            @Html.Partial("~/Views/Ministre/bar/dimArr.cshtml")
-            @Html.Partial("~/Views/Ministre/bar/dimCommune.cshtml")
-            @Html.Partial("~/Views/Shared/decideur/tous/email.cshtml")
-           
-        </section>
+    <section class="content">
+        <div class="row">
 
-        <!-- right col (We are only adding the ID to make the widgets sortable)-->
-        <section class="col-lg-5 connectedSortable">
-            @Html.Partial("~/Views/Ministre/bar/dimGouv.cshtml")
-            @Html.Partial("~/Views/Ministre/bar/dimDate.cshtml")
-            @Html.Partial("~/Views/Shared/decideur/tous/calender.cshtml")
-          
-            <!-- /.box -->
-        </section>
+            <!-- Left col -->
+            <section class="col-lg-7 connectedSortable">
+                <!-- Custom tabs (Charts with tabs)-->
+                @Html.Partial("~/Views/Ministre/bar/dimArr.cshtml")
+                @Html.Partial("~/Views/Ministre/bar/dimCommune.cshtml")
+                @Html.Partial("~/Views/Shared/decideur/tous/email.cshtml")
 
-    </div>
-    
+            </section>
+
+            <!-- right col (We are only adding the ID to make the widgets sortable)-->
+            <section class="col-lg-5 connectedSortable">
+                @Html.Partial("~/Views/Ministre/bar/dimGouv.cshtml")
+                @Html.Partial("~/Views/Ministre/bar/dimDate.cshtml")
+                @Html.Partial("~/Views/Shared/decideur/tous/calender.cshtml")
+
+                <!-- /.box -->
+            </section>
+
+        </div>
+
 
     </section>

@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/admin/_LayoutAdmin.cshtml";
 }
 
 <h2>Index</h2>
@@ -9,37 +10,36 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.pseudo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.mdp)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.idDecideur)
-        </th>
-        <th></th>
-    </tr>
+<table class="table table-sm">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayName("Pseudo")
+            </th>
+            <th>
+                @Html.DisplayName("Mot de passe")
+            </th>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.pseudo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.mdp)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.idDecideur)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.pseudo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.mdp)
+                </td>
 
+                <td>
+
+                    @Html.ActionLink("Details", "Details", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.id })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>

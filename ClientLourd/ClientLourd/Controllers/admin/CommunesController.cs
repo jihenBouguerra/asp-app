@@ -17,44 +17,59 @@ namespace ClientLourd.Controllers.admin
         // GET: Communes
         public ActionResult Index()
         {
-            return View(db.communes.ToList());
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
+            {
+                return View(db.communes.ToList());
+            }
+            else
+                return HttpNotFound();
         }
 
         // GET: Communes/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Commune commune = db.communes.Find(id);
+                if (commune == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(commune);
             }
-            Commune commune = db.communes.Find(id);
-            if (commune == null)
-            {
+            else
                 return HttpNotFound();
-            }
-            return View(commune);
         }
 
         // GET: Communes/Create
         public ActionResult Create()
         {
-            var gouvernoratQuery = from doc in db.gouvernorats select new { doc.id, doc.nomfr};
-            IEnumerable<SelectListItem> i =
-                from c in gouvernoratQuery
-                select new SelectListItem
-                {
-
-                    Text = c.nomfr,
-                    Value = c.id.ToString()
-                };
-            List<SelectListItem> items = new List<SelectListItem>();
-
-            foreach (var item in gouvernoratQuery)
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
             {
-                items.Add(new SelectListItem { Text = item.nomfr, Value = item.id.ToString() });
+                var gouvernoratQuery = from doc in db.gouvernorats select new { doc.id, doc.nomfr };
+                IEnumerable<SelectListItem> i =
+                    from c in gouvernoratQuery
+                    select new SelectListItem
+                    {
+
+                        Text = c.nomfr,
+                        Value = c.id.ToString()
+                    };
+                List<SelectListItem> items = new List<SelectListItem>();
+
+                foreach (var item in gouvernoratQuery)
+                {
+                    items.Add(new SelectListItem { Text = item.nomfr, Value = item.id.ToString() });
+                }
+                ViewBag.listGouv = items;
+                return View();
             }
-            ViewBag.listGouv = items;
-            return View();
+            else
+                return HttpNotFound();
         }
 
         // POST: Communes/Create
@@ -64,57 +79,76 @@ namespace ClientLourd.Controllers.admin
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,nomArab,nomfr,selectedGouv")] Commune commune)
         {
-            if (ModelState.IsValid)
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
             {
-                Gouvernorat g = db.gouvernorats.Find(Int32.Parse(commune.selectedGouv));
-                commune.gouvernorat = g;
-                db.communes.Add(commune);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (!db.communeExiste(commune.nomfr))
+                {
+                    ViewBag.msgErreur = "Nom commune existe déja";
+                }
+                else if (ModelState.IsValid)
+                {
+                    Gouvernorat g = db.gouvernorats.Find(Int32.Parse(commune.selectedGouv));
+                    commune.gouvernorat = g;
+                    db.communes.Add(commune);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            return View(commune);
+                return View(commune);
+            }
+            else
+                return HttpNotFound();
         }
 
         // GET: Communes/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Commune commune = db.communes.Find(id);
-            if (commune == null)
-            {
-                return HttpNotFound();
-            }else
-            {
+
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Commune commune = db.communes.Find(id);
+                if (commune == null)
+                {
+                    return HttpNotFound();
+                }
+                Gouvernorat g = db.gouvernorats.Find(commune.gouvernorat.id);
                 var gouvernoratQuery = from doc in db.gouvernorats select new { doc.id, doc.nomfr };
-                 List<SelectListItem> k = new List<SelectListItem>();
+                List<SelectListItem> k = new List<SelectListItem>();
                 foreach (var c in gouvernoratQuery)
-                {   if (c.id ==id) {
-                        k.Add(new SelectListItem {
+                {
+                    if (c.id == g.id)
+                    {
+                        k.Add(new SelectListItem
+                        {
                             Text = c.nomfr,
                             Value = c.id.ToString(),
                             Selected = true
-                        }) ;
-                    }else{
+                        });
+                    }
+                    else
+                    {
                         k.Add(new SelectListItem
                         {
                             Text = c.nomfr,
                             Value = c.id.ToString(),
                         });
-                        
+
                     }
-                     
+
 
                 }
 
-                
-                ViewBag.listGouv =k;
+
+                ViewBag.listGouv = k;
                 return View(commune);
             }
-           
+            else
+                return HttpNotFound();
+
         }
 
         // POST: Communes/Edit/5
@@ -124,37 +158,58 @@ namespace ClientLourd.Controllers.admin
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,nomArab,nomfr,selectedGouv")] Commune commune)
         {
-            if (ModelState.IsValid)
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
             {
+                if (!db.communeExiste(commune.nomfr))
+                {
+                    ViewBag.msgErreur = "Nom commune existe déja";
+                }
+                else if (ModelState.IsValid)
+                {
+                    Gouvernorat g = db.gouvernorats.Find(Int32.Parse(commune.selectedGouv));
+                    Commune dg = db.communes.Find(commune.id);
+                    db.communes.Attach(dg);
+                    db.gouvernorats.Attach(g);
+                    dg.nomfr = commune.nomfr;
+                    dg.selectedGouv = commune.selectedGouv;
+                    dg.gouvernorat = g;
 
-                Gouvernorat g = db.gouvernorats.Find(Int32.Parse(commune.selectedGouv));
-                commune.gouvernorat = g;
-                var entity = db.communes.Find(commune.id);
-                     
-                db.Entry(entity).CurrentValues.SetValues(commune);
-             
 
-               // db.Entry(commune).State = EntityState.Modified;
-               
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                    db.Entry(dg).State = EntityState.Modified;
+
+
+
+
+
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+
+
+                }
+                return View(commune);
             }
-            return View(commune);
+            else
+                return HttpNotFound();
         }
 
         // GET: Communes/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Commune commune = db.communes.Find(id);
+                if (commune == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(commune);
             }
-            Commune commune = db.communes.Find(id);
-            if (commune == null)
-            {
+            else
                 return HttpNotFound();
-            }
-            return View(commune);
         }
 
         // POST: Communes/Delete/5
@@ -162,19 +217,29 @@ namespace ClientLourd.Controllers.admin
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Commune commune = db.communes.Find(id);
-            db.communes.Remove(commune);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
+            {
+                Commune commune = db.communes.Find(id);
+                db.communes.Remove(commune);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+                return HttpNotFound();
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
             {
-                db.Dispose();
+                if (disposing)
+                {
+                    db.Dispose();
+                }
+                base.Dispose(disposing);
             }
-            base.Dispose(disposing);
+
+
         }
     }
 }

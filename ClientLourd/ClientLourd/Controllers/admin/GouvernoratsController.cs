@@ -17,28 +17,42 @@ namespace ClientLourd.Controllers
         // GET: Gouvernorats
         public ActionResult Index()
         {
-            return View("~/Views/admin/Gouvernorats/Index.cshtml", db.gouvernorats.ToList());
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre==false)
+            {
+                return View("~/Views/admin/Gouvernorats/Index.cshtml", db.gouvernorats.ToList());
+            }
+            else
+                return HttpNotFound();
         }
-
         // GET: Gouvernorats/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Gouvernorat gouvernorat = db.gouvernorats.Find(id);
+                if (gouvernorat == null)
+                {
+                    return HttpNotFound();
+                }
+                return View("~/Views/admin/Gouvernorats/Details.cshtml", gouvernorat);
             }
-            Gouvernorat gouvernorat = db.gouvernorats.Find(id);
-            if (gouvernorat == null)
-            {
+            else
                 return HttpNotFound();
-            }
-            return View("~/Views/admin/Gouvernorats/Details.cshtml",gouvernorat);
         }
 
         // GET: Gouvernorats/Create
         public ActionResult Create()
         {
-            return View("~/Views/admin/Gouvernorats/Create.cshtml");
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
+            {
+                return View("~/Views/admin/Gouvernorats/Create.cshtml");
+            }
+            else
+                return HttpNotFound();
         }
 
         // POST: Gouvernorats/Create
@@ -48,29 +62,45 @@ namespace ClientLourd.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,nomArab,nomfr")] Gouvernorat gouvernorat)
         {
-            if (ModelState.IsValid)
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
             {
-                db.gouvernorats.Add(gouvernorat);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                /*  if (!db.gouvernoratExiste(gouvernorat.nomfr))
+                  {
+                      ViewBag.msgErreur = "Nom gouvernorat existe déja";
+                  }
+                  else*/
+                if (ModelState.IsValid)
+                {
+                    db.gouvernorats.Add(gouvernorat);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
 
-            return View(gouvernorat);
+                return View(gouvernorat);
+            }
+            else
+                return HttpNotFound();
+
         }
 
         // GET: Gouvernorats/Edit/5
         public ActionResult Edit(int? id)
         {
-            if (id == null)
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Gouvernorat gouvernorat = db.gouvernorats.Find(id);
+                if (gouvernorat == null)
+                {
+                    return HttpNotFound();
+                }
+                return View("~/Views/admin/Gouvernorats/Edit.cshtml", gouvernorat);
             }
-            Gouvernorat gouvernorat = db.gouvernorats.Find(id);
-            if (gouvernorat == null)
-            {
+            else
                 return HttpNotFound();
-            }
-            return View("~/Views/admin/Gouvernorats/Edit.cshtml", gouvernorat);
         }
 
         // POST: Gouvernorats/Edit/5
@@ -79,29 +109,46 @@ namespace ClientLourd.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "id,nomArab,nomfr")] Gouvernorat gouvernorat)
+
         {
-            if (ModelState.IsValid)
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
             {
-                db.Entry(gouvernorat).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                /* if (!db.gouvernoratExiste(gouvernorat.nomfr))
+                 {
+                     ViewBag.msgErreur = "Nom gouvernorat existe déja";
+                 }
+                 else */
+                if (ModelState.IsValid)
+                {
+                    db.Entry(gouvernorat).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                return View(gouvernorat);
             }
-            return View(gouvernorat);
+            else
+                return HttpNotFound();
         }
 
         // GET: Gouvernorats/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Gouvernorat gouvernorat = db.gouvernorats.Find(id);
+                if (gouvernorat == null)
+                {
+                    return HttpNotFound();
+                }
+
+                return View("~/Views/admin/Gouvernorats/Delete.cshtml", gouvernorat);
             }
-            Gouvernorat gouvernorat = db.gouvernorats.Find(id);
-            if (gouvernorat == null)
-            {
+            else
                 return HttpNotFound();
-            }
-            return View("~/Views/admin/Gouvernorats/Delete.cshtml", gouvernorat);
         }
 
         // POST: Gouvernorats/Delete/5
@@ -109,19 +156,30 @@ namespace ClientLourd.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Gouvernorat gouvernorat = db.gouvernorats.Find(id);
-            db.gouvernorats.Remove(gouvernorat);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (Session["pseudo"] != null &&AppContext.log.adminOuMinitre!= null && AppContext.log.adminOuMinitre.ministre == false)
+            {
+                Gouvernorat gouvernorat = db.gouvernorats.Find(id);
+                if (gouvernorat.decideurs != null)
+                    db.effaceGouv(gouvernorat);
+                db.gouvernorats.Remove(gouvernorat);
+
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+                return HttpNotFound();
         }
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
             {
-                db.Dispose();
+                if (disposing)
+                {
+                    db.Dispose();
+                }
+                base.Dispose(disposing);
             }
-            base.Dispose(disposing);
         }
     }
 }

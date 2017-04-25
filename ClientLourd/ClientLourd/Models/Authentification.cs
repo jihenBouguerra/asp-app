@@ -17,11 +17,16 @@ namespace ClientLourd.Models
         public string pseudo { get; set;  }
         [Required(AllowEmptyStrings = false)]
         public string mdp { get; set; }
-        public string idDecideur { get; set; }
-        public virtual Decideur decideur { get; set; }
-        public Authentification()
-        {
+       
 
+        public string variable { get; set; }
+        public  virtual compte adminOuMinitre { get; set; }
+        public virtual DecideurCommune  decideurCommune  { get; set; }
+        public virtual DecideurGouvernorat decideurGouvernorat { get; set; }
+     
+
+        public Authentification()
+        { 
         }
     }
    

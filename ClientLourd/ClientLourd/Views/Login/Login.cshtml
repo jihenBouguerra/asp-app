@@ -1,0 +1,70 @@
+﻿
+ 
+
+@model ClientLourd.Models.Authentification
+@{
+    Layout = "~/Views/Shared/login/_LayoutLogin.cshtml";
+    ViewBag.Title = "Login";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="top-content">
+
+        <div class="inner-bg">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-3 form-box">
+                        <div class="form-top">
+                            <div class="form-top-left">
+                                <h3>Connectez a votre site</h3>
+                                <p>Entrez votre pseudo et votre mot de passe:</p>
+                            </div>
+                            <div class="form-top-right">
+                                <i class="fa fa-key"></i>
+                            </div>
+                        </div>
+                        <div class="form-bottom">
+                            <form role="form" action="" method="post" class="login-form">
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-username">Username</label>
+
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+                                    @Html.EditorFor(model => model.pseudo, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.pseudo, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="form-group">
+                                    <label class="sr-only" for="form-password">Password</label>
+
+
+ 
+                                    @Html.PasswordFor(model => model.mdp, new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.mdp, "", new { @class = "text-danger" })
+                                </div>
+                                <button type="submit" class="btn">Sign in!</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

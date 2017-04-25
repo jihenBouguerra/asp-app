@@ -12,50 +12,69 @@ namespace ClientLourd.Controllers.admin
 {
     public class AuthentificationController : Controller
     {
+        public List<SelectListItem> ListDesideur;
         private AppContext db = new AppContext();
 
         // GET: Authentification
         public ActionResult Index()
         {
-            return View(db.authentifications.ToList());
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
+                return View(db.authentifications.ToList());
+            else return HttpNotFound();
         }
 
         // GET: Authentification/Details/5
         public ActionResult Details(int? id)
         {
-            if (id == null)
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Authentification authentification = db.authentifications.Find(id);
+                if (authentification == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(authentification);
             }
-            Authentification authentification = db.authentifications.Find(id);
-            if (authentification == null)
-            {
+            else
                 return HttpNotFound();
-            }
-            return View(authentification);
         }
 
         // GET: Authentification/Create
         public ActionResult Create()
         {
-            var gouvernoratQuery = from doc in db.decideurs select new { doc.id, doc.cin, doc.nom, doc.prenom };
-            IEnumerable<SelectListItem> i =
-                from c in gouvernoratQuery
-                select new SelectListItem
-                {
-
-                    Text = c.prenom,
-                    Value = c.id.ToString()
-                };
-            List<SelectListItem> items = new List<SelectListItem>();
-
-            foreach (var item in gouvernoratQuery)
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
             {
-                items.Add(new SelectListItem { Text = item.nom, Value = item.id.ToString() });
-            }
-            ViewBag.listDecideur = items;
 
-            return View();
+
+                var dc = from doc in db.decideursCommune select new { doc.id, doc.nom, doc.prenom, doc.cin };
+
+                List<SelectListItem> items = new List<SelectListItem>();
+                foreach (var item in dc)
+                {
+                    items.Add(new SelectListItem { Text = item.nom + " " + item.prenom, Value = item.cin.ToString() });
+                }
+                var dg = from doc in db.decideursGouvernorat select new { doc.id, doc.nom, doc.prenom, doc.cin };
+
+                foreach (var item in dg)
+                {
+                    items.Add(new SelectListItem { Text = item.nom + " " + item.prenom, Value = item.cin.ToString() });
+                }
+                var com = from doc in db.comptes select new { doc.id, doc.nom, doc.prenom, doc.cin };
+
+                foreach (var item in com)
+                {
+                    items.Add(new SelectListItem { Text = item.nom + " " + item.prenom, Value = item.cin.ToString() });
+                }
+                ListDesideur = items;
+                ViewBag.listGouv = items;
+                return View();
+            }
+            else
+                return HttpNotFound();
         }
 
         // POST: Authentification/Create
@@ -63,84 +82,82 @@ namespace ClientLourd.Controllers.admin
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id,pseudo,mdp,idDecideur")] Authentification authentification)
+        public ActionResult Create([Bind(Include = "id,pseudo,mdp,variable")] Authentification authentification)
         {
-            if (ModelState.IsValid)
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
             {
-                Decideur d = db.decideurs.Find(Int32.Parse(authentification.idDecideur));
-                authentification.decideur = d;
-                db.authentifications.Add(authentification);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+                if (ModelState.IsValid)
+                {
 
-            return View(authentification);
-        }
+                    if (db.getDc(Int32.Parse(authentification.variable)) != null)
+                        authentification.decideurCommune = db.getDc(Int32.Parse(authentification.variable));
+                    else if (db.getDg(Int32.Parse(authentification.variable)) != null)
+                        authentification.decideurGouvernorat = db.getDg(Int32.Parse(authentification.variable));
+                    else
+                        authentification.adminOuMinitre = db.getAM(Int32.Parse(authentification.variable));
 
-        // GET: Authentification/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                    db.authentifications.Add(authentification);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+                return View(authentification);
             }
-            Authentification authentification = db.authentifications.Find(id);
-            if (authentification == null)
-            {
+            else
                 return HttpNotFound();
-            }
-            return View(authentification);
         }
 
-        // POST: Authentification/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,pseudo,mdp,idDecideur")] Authentification authentification)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(authentification).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(authentification);
-        }
 
         // GET: Authentification/Delete/5
         public ActionResult Delete(int? id)
         {
-            if (id == null)
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                Authentification authentification = db.authentifications.Find(id);
+                if (authentification == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(authentification);
             }
-            Authentification authentification = db.authentifications.Find(id);
-            if (authentification == null)
-            {
+            else
                 return HttpNotFound();
-            }
-            return View(authentification);
         }
 
         // POST: Authentification/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
+
         {
-            Authentification authentification = db.authentifications.Find(id);
-            db.authentifications.Remove(authentification);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
+            {
+                Authentification authentification = db.authentifications.Find(id);
+                db.authentifications.Remove(authentification);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            else
+                return HttpNotFound();
         }
+
+
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
+            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
             {
-                db.Dispose();
+                if (disposing)
+                {
+                    db.Dispose();
+                }
+                base.Dispose(disposing);
             }
-            base.Dispose(disposing);
+
         }
     }
 }

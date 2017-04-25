@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/admin/_LayoutAdmin.cshtml";
 }
 
 <h2>Delete</h2>
@@ -12,7 +13,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.pseudo)
+            @Html.DisplayName("Pseudo:")
         </dt>
 
         <dd>
@@ -20,19 +21,59 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.mdp)
+            @Html.DisplayName("Mot de passe:")
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.mdp)
         </dd>
-
         <dt>
-            @Html.DisplayNameFor(model => model.idDecideur)
+            @Html.DisplayName("Nom")
         </dt>
-
         <dd>
-            @Html.DisplayFor(model => model.idDecideur)
+
+            @{ if (Model.decideurCommune != null)
+                {
+                    @Html.DisplayFor(model => model.decideurCommune.nom)
+                }
+                else if (Model.decideurGouvernorat != null)
+                {
+                    @Html.DisplayFor(model => model.decideurGouvernorat.nom)
+                }
+                else
+                { @Html.DisplayFor(model => model.adminOuMinitre.nom) } }
+        </dd>
+        <dt>
+            @Html.DisplayName("Prenom")
+        </dt>
+        <dd>
+
+            @{ if (Model.decideurCommune != null)
+                {
+                    @Html.DisplayFor(model => model.decideurCommune.prenom)
+                }
+                else if (Model.decideurGouvernorat != null)
+                {
+                    @Html.DisplayFor(model => model.decideurGouvernorat.prenom)
+                }
+                else
+                { @Html.DisplayFor(model => model.adminOuMinitre.prenom) } }
+        </dd>
+        <dt>
+            @Html.DisplayName("CIN")
+        </dt>
+        <dd>
+
+            @{ if (Model.decideurCommune != null)
+                {
+                    @Html.DisplayFor(model => model.decideurCommune.cin)
+                }
+                else if (Model.decideurGouvernorat != null)
+                {
+                    @Html.DisplayFor(model => model.decideurGouvernorat.cin)
+                }
+                else
+                { @Html.DisplayFor(model => model.adminOuMinitre.cin) } }
         </dd>
 
     </dl>

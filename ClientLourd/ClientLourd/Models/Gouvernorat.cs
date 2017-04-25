@@ -14,8 +14,9 @@ namespace ClientLourd.Models
         public string nomArab { get; set; }
         [Required(AllowEmptyStrings = false)]
         public string nomfr { get; set; }
+        
         public virtual ICollection<Commune> communes { get; set; }
-        public virtual ICollection<Decideur> decideurs { get; set; }
+        public virtual ICollection<DecideurGouvernorat> decideurs { get; set; }
   
           public virtual ICollection<Graph> graphs { get; set; }
          
@@ -23,7 +24,7 @@ namespace ClientLourd.Models
         public Gouvernorat()
         {
             communes = new List<Commune>();
-            decideurs = new List<Decideur>();
+            decideurs = new List<DecideurGouvernorat>();
            graphs = new List<Graph>();
         }
     }

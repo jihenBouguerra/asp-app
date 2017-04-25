@@ -16,13 +16,13 @@ namespace ClientLourd.Models
         public string nomfr { get; set; }
         public string selectedGouv { get; set; }
         public virtual Gouvernorat gouvernorat { get; set; }
-        public virtual ICollection<Decideur> decideurs { get; set; }
+        public virtual ICollection<DecideurCommune> decideurs { get; set; }
        
        public virtual ICollection<Graph> graphs { get; set; }
    
         public Commune()
         {
-            decideurs = new List<Decideur>();
+            decideurs = new List<DecideurCommune>();
             graphs = new List<Graph>();
         } 
 
