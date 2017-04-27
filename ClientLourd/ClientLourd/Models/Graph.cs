@@ -17,8 +17,8 @@ namespace ClientLourd.Models
         public string titre { get; set; }
         public bool detaille { get; set; }
         public String  variable{ get; set; }
-        public String fait { get; set; }
-        public String dimention { get; set; }
+        public int fait { get; set; }
+        public int dimention { get; set; }
         public virtual Commune commune { get; set; }
         public virtual Gouvernorat gouvernorat { get; set; }
        

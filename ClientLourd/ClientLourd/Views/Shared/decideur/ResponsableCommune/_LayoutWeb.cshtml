@@ -49,31 +49,20 @@
 
     <div class="wrapper">
 
-      @Html.Partial("~/Views/Shared/ResponsableCommune/menu.cshtml")
+        @Html.Partial("~/Views/Shared/decideur/tous/menu.cshtml")
 
         <!-- Left side column. contains the logo and sidebar -->
-        @Html.Partial("~/Views/Shared/ResponsableCommune/navGauche.cshtml")
+        @Html.Partial("~/Views/Shared/decideur/ResponsableCommune/navGauche.cshtml")
 
-
-        <!-- Content Wrapper. Contains page content -->
+ 
         <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <h1>
-                    Dashboard
-                    <small>Control panel</small>
-                </h1>
-                <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li class="active">Dashboard</li>
-                </ol>
-            </section>
-
-            <!-- Main content -->
-            @RenderBody()
+            
+           
+                <!-- Main content -->
+                @RenderBody()
 
 
-            <!-- /.content -->
+                <!-- /.content -->
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer"></footer>

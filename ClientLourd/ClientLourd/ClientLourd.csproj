@@ -270,7 +270,6 @@
     <Content Include="Views\Shared\decideur\tous\calender.cshtml" />
     <Content Include="Views\Shared\decideur\tous\email.cshtml" />
     <Content Include="Views\Shared\decideur\tous\header.cshtml" />
-    <Content Include="Views\Shared\decideur\ministre\menu.cshtml" />
     <Content Include="Views\Shared\decideur\tous\msg.cshtml" />
     <Content Include="Views\Shared\decideur\tous\navDroite.cshtml" />
     <Content Include="Views\Shared\decideur\ministre\navGauche.cshtml" />
@@ -316,19 +315,19 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\ResponsableCommune\BNR.cshtml" />
     <Content Include="Views\ResponsableCommune\BAR.cshtml" />
-    <Content Include="Views\ResponsableCommune\bnr\dimArr.cshtml" />
-    <Content Include="Views\ResponsableCommune\bnr\dimCommune.cshtml" />
-    <Content Include="Views\ResponsableCommune\bnr\dimDate.cshtml" />
-    <Content Include="Views\ResponsableCommune\bnr\dimGouv.cshtml" />
     <Content Include="Views\ResponsableCommune\bar\dimArr.cshtml" />
     <Content Include="Views\ResponsableCommune\bar\dimCommune.cshtml" />
     <Content Include="Views\ResponsableCommune\bar\dimDate.cshtml" />
-    <Content Include="Views\ResponsableCommune\bar\dimGouv.cshtml" />
-    <Content Include="Views\Shared\decideur\ResponsableCommune\_LayoutWeb.cshtml" />
-    <Content Include="Views\Shared\decideur\ResponsableCommune\menu.cshtml" />
-    <Content Include="Views\Shared\decideur\ResponsableCommune\navGauche.cshtml" />
     <Content Include="Views\Shared\admin\navGauche.cshtml" />
     <Content Include="Views\Shared\admin\menu.cshtml" />
+    <Content Include="Views\Shared\decideur\ResponsableCommune\_LayoutWeb.cshtml" />
+    <Content Include="Views\Shared\decideur\ResponsableCommune\navGauche.cshtml" />
+    <Content Include="Views\ResponsableCommune\bar\dimTypeTaxe.cshtml" />
+    <Content Include="Views\Shared\decideur\tous\menu.cshtml" />
+    <Content Include="Views\ResponsableCommune\bnr\dimArr.cshtml" />
+    <Content Include="Views\ResponsableCommune\bnr\dimCommune.cshtml" />
+    <Content Include="Views\ResponsableCommune\bnr\dimDate.cshtml" />
+    <Content Include="Views\ResponsableCommune\bnr\dimTypeTaxe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

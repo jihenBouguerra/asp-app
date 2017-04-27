@@ -70,11 +70,29 @@ namespace ClientLourd.Controllers.Login
         {
             return RedirectToAction("Index", "comptes");
         }
-        public ActionResult MinistreBNR(Authentification login)
+        public ActionResult MinistreBNR()
         {
             if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == true)
             {
-                return View("~/Views/Ministre/BNR.cshtml", login);
+                return View("~/Views/Ministre/BNR.cshtml");
+            }
+            else
+                return HttpNotFound();
+        }
+        public ActionResult RCBAR()
+        {
+            if (Session["pseudo"] != null && AppContext.log.decideurCommune!=null )
+            {
+                return View("~/Views/ResponsableCommune/BAR.cshtml");
+            }
+            else
+                return HttpNotFound();
+        }
+        public ActionResult RCBNR()
+        {
+            if (Session["pseudo"] != null && AppContext.log.decideurCommune != null)
+            {
+                return View("~/Views/ResponsableCommune/BNR.cshtml");
             }
             else
                 return HttpNotFound();
@@ -116,13 +134,16 @@ namespace ClientLourd.Controllers.Login
                     if (AppContext.log.adminOuMinitre != null)
                     {
                         if (AppContext.log.adminOuMinitre.ministre)
-                            return RedirectToAction("MinistreBNR", login);
+                            return RedirectToAction("MinistreBNR");
                         else
-                            return RedirectToAction("CreateCommune", login);
+                            return RedirectToAction("CreateCommune");
                     }
 
                     if (AppContext.log.decideurCommune != null)
-                        return View("~/Views/Ministre/BNR.cshtml");
+                    {
+                        return RedirectToAction("ResponsableCommuneBNR");
+                    }
+                        
                     if (AppContext.log.decideurGouvernorat != null)
                         return View("~/Vieloginws/Ministre/BNR.cshtml");
                     return RedirectToAction("Login");

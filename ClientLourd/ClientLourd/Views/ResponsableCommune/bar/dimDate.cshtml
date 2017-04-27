@@ -1,8 +1,21 @@
-﻿<div class="box box-solid bg-teal-gradient">
+﻿
+@model IEnumerable<ClientLourd.Models.Authentification>
+@{
+    var graphes = ClientLourd.Models.AppContext.log.decideurCommune.commune.graphs.ToList();
+    var graph = from b in graphes
+                where b.dimention ==4 && b.detaille == false && b.fait == 2
+                select b;
+
+    var url = graph.First().valeur;
+
+
+
+}
+<div class="box box-solid bg-teal-gradient">
     <div class="box-header">
         <i class="fa fa-th"></i>
 
-        <h3 class="box-title">Suivit des budgets non réalisés par années</h3>
+        <h3 class="box-title">Suivit des budgets à realiser par années</h3>
 
         <div class="box-tools pull-right">
             <button type="button" class="btn bg-teal btn-sm" data-widget="collapse">
@@ -16,7 +29,7 @@
     <div class="box-body border-radius-none">
 
 
-        <iframe width="100%" height="300" src="https://app.powerbi.com/view?r=eyJrIjoiODFhNzc1NTMtMDM2OC00YmI3LThjZjAtZWM3ZTRiNmM5OWU3IiwidCI6ImYwNjA4MDQxLTU1ZGMtNDJjNS1iY2FkLTUzNjIzZTFhY2FlNCIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>
+        <iframe width="100%" height="300" src="@url" frameborder="0" allowFullScreen="true"></iframe>
     </div>
     <a href="#" class="small-box-footer">Plus d'information <i class="fa fa-arrow-circle-right"></i></a>
 </div>

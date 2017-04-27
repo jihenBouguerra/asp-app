@@ -48,12 +48,14 @@ namespace ClientLourd.Controllers.admin
         // GET: comptes/Create
         public ActionResult Create()
         {
+            return View();
+            /*
             if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
             {
                 return View();
             }
             else
-                return HttpNotFound();
+                return HttpNotFound();*/
         }
 
         // POST: comptes/Create
@@ -63,8 +65,8 @@ namespace ClientLourd.Controllers.admin
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,cin,nom,prenom,variable,Email,ministre")] compte compte)
         {
-            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
-            {
+          /*  if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
+            {*/
                 if (ModelState.IsValid)
                 {
                     db.comptes.Add(compte);
@@ -73,9 +75,9 @@ namespace ClientLourd.Controllers.admin
                 }
 
                 return View(compte);
-            }
+           /* }
             else
-                return HttpNotFound();
+                return HttpNotFound();*/
         }
 
         // GET: comptes/Edit/5

@@ -10,16 +10,17 @@
         <section class="col-lg-7 connectedSortable">
             <!-- Custom tabs (Charts with tabs)-->
             @Html.Partial("~/Views/ResponsableCommune/bar/dimArr.cshtml")
+            @Html.Partial("~/Views/ResponsableCommune/bar/dimTypeTaxe.cshtml")
             @Html.Partial("~/Views/ResponsableCommune/bar/dimCommune.cshtml")
-            @Html.Partial("~/Views/ResponsableCommune/decideur/tous/email.cshtml")
+        
            
         </section>
 
         <!-- right col (We are only adding the ID to make the widgets sortable)-->
         <section class="col-lg-5 connectedSortable">
-            @Html.Partial("~/Views/ResponsableCommune/bar/dimGouv.cshtml")
+ 
             @Html.Partial("~/Views/ResponsableCommune/bar/dimDate.cshtml")
-            @Html.Partial("~/Views/ResponsableCommune/decideur/tous/calender.cshtml")
+            @Html.Partial("~/Views/Shared/decideur/tous/calender.cshtml")
           
             <!-- /.box -->
         </section>

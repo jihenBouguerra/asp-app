@@ -46,9 +46,9 @@ namespace ClientLourd.Controllers.admin
         // GET: Authentification/Create
         public ActionResult Create()
         {
-            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
+           /* if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
             {
-
+            */
 
                 var dc = from doc in db.decideursCommune select new { doc.id, doc.nom, doc.prenom, doc.cin };
 
@@ -72,9 +72,9 @@ namespace ClientLourd.Controllers.admin
                 ListDesideur = items;
                 ViewBag.listGouv = items;
                 return View();
-            }
+          /* }
             else
-                return HttpNotFound();
+                return HttpNotFound();*/
         }
 
         // POST: Authentification/Create
@@ -84,8 +84,8 @@ namespace ClientLourd.Controllers.admin
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "id,pseudo,mdp,variable")] Authentification authentification)
         {
-            if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
-            {
+          /*  if (Session["pseudo"] != null && AppContext.log.adminOuMinitre != null && AppContext.log.adminOuMinitre.ministre == false)
+            {*/
                 if (ModelState.IsValid)
                 {
 
@@ -102,9 +102,9 @@ namespace ClientLourd.Controllers.admin
                 }
 
                 return View(authentification);
-            }
+      /*      }
             else
-                return HttpNotFound();
+                return HttpNotFound();*/
         }
 
 

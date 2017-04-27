@@ -1,4 +1,18 @@
-﻿<div class="nav-tabs-custom">
+﻿
+@model IEnumerable<ClientLourd.Models.Authentification>
+@{
+    var graphes = ClientLourd.Models.AppContext.log.decideurCommune.commune.graphs.ToList();
+    var graph = from b in graphes
+                where b.dimention == 3 && b.detaille == false && b.fait == 2
+                select b;
+
+    var url = graph.First().valeur;
+
+
+
+}
+
+<div class="nav-tabs-custom">
     <!-- Tabs within a box -->
     <div class="box-header">
         <i class="fa fa-th"></i>
@@ -10,7 +24,7 @@
     <div class="tab-content no-padding">
         <!-- Morris chart - Sales -->
 
-        <iframe width="100%" height="410" src="https://app.powerbi.com/view?r=eyJrIjoiMmFiYTUzMmUtM2M0Zi00OTkxLTg1OGYtZmQ2NzUzNjJjYjQzIiwidCI6ImYwNjA4MDQxLTU1ZGMtNDJjNS1iY2FkLTUzNjIzZTFhY2FlNCIsImMiOjh9" frameborder="0" allowFullScreen="true"></iframe>
+        <iframe width="100%" height="410" src="@url" frameborder="0" allowFullScreen="true"></iframe>
         <a href="#" class="small-box-footer">Plus d'information <i class="fa fa-arrow-circle-right"></i></a>
     </div>
 </div>

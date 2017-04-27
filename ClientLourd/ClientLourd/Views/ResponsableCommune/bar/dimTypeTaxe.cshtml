@@ -2,7 +2,7 @@
 @{ 
     var graphes=  ClientLourd.Models.AppContext.log.decideurCommune.commune.graphs.ToList();
     var graph = from b in graphes
-                where b.dimention==1  &&  b.detaille== false && b.fait==1
+                where b.dimention==2  &&  b.detaille== false && b.fait ==2
                 select b;
 
     var url = graph.First().valeur;
@@ -15,7 +15,7 @@
     <div class="box-header">
         <i class="fa fa-th"></i>
 
-        <h3 class="box-title">Suivit des budgets non réalisés par arrondissement</h3>
+        <h3 class="box-title">Suivit des budgets non réalisés par TypeTaxe</h3>
 
 
     </div>
