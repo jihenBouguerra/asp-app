@@ -1,0 +1,110 @@
+﻿<DeploymentSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Target>
+    <Database>ProjetMultidimensionnel4</Database>
+    <Server>JIHEN\JIIHEN</Server>
+    <ConnectionString>Data Source=JIHEN\JIIHEN;Timeout=0</ConnectionString>
+  </Target>
+  <Options>
+    <TransactionalDeployment>true</TransactionalDeployment>
+    <PartitionDeployment>DeployPartitions</PartitionDeployment>
+    <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
+    <ProcessingOption>Default</ProcessingOption>
+    <OutputScript></OutputScript>
+    <ImpactAnalysisFile></ImpactAnalysisFile>
+    <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
+    <OptimizationSettingsDeployment>Deploy</OptimizationSettingsDeployment>
+    <WriteBackTableCreation>UseExisting</WriteBackTableCreation>
+  </Options>
+  <Snapshot>
+    <ObjectSnapshots>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
+        <TimeStamp>DPRfIpW0z+XO+q9uSjpBXkDjVwE=16/03/2017 10:19:3330/03/2017 11:03:02</TimeStamp>
+        <ID>
+          <String>Dw2</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.DataSourceView</Type>
+        <TimeStamp>E0k1uL/1VjDwMCLWKFuKn7kFgGA=16/03/2017 16:06:4230/03/2017 11:03:02</TimeStamp>
+        <ID>
+          <String>Dw2</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>aEhyvRPkbG/5AP+ekv1JUz6aI0c=16/03/2017 15:33:3530/03/2017 11:03:02</TimeStamp>
+        <ID>
+          <String>Dim Article</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>txKsFr3vCVmoewCTAIwhQopguhU=16/03/2017 15:33:4130/03/2017 11:03:02</TimeStamp>
+        <ID>
+          <String>Dim Arrondissement</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>VU1ziFXWdRfUpQUuNe8QXbJv08c=16/03/2017 15:33:3530/03/2017 11:03:02</TimeStamp>
+        <ID>
+          <String>Dim Commune</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>loTrxcou3I+ZDlmyTM5iDNqooLo=16/03/2017 15:33:3630/03/2017 11:03:02</TimeStamp>
+        <ID>
+          <String>Dim Gouvernorat</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>ihuWZnQ+wqIlb/+GedOSFAzmUSc=16/03/2017 15:33:3630/03/2017 11:03:02</TimeStamp>
+        <ID>
+          <String>Dim Rue</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>8MvwadGZpMlM0M1xwGejtARkZYU=16/03/2017 15:33:3630/03/2017 11:03:02</TimeStamp>
+        <ID>
+          <String>Dim Type Article</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>w3JaLcDe+jYfbEET2Dd3L1raBWc=16/03/2017 16:08:1430/03/2017 11:03:02</TimeStamp>
+        <ID>
+          <String>Time</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>c2y1HHng+4sQhHhwmAvEZQOOaBE=16/03/2017 16:47:3030/03/2017 11:03:02</TimeStamp>
+        <ID>
+          <String>Dim Article 2</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>RS4ipqtl1M+WfmG3iGmAWr2cPCM=16/03/2017 16:47:1730/03/2017 11:03:02c83xpoJEpOshEf3J/3Uwj9kBDRQ=16/03/2017 10:27:0930/03/2017 11:03:02</TimeStamp>
+        <ID>
+          <String>Dw2</String>
+        </ID>
+      </ObjectSnapshot>
+    </ObjectSnapshots>
+    <DatabaseSnapshot>
+      <Type>Microsoft.AnalysisServices.Database</Type>
+      <TimeStamp>TIQCtfYDRmhp9Tk6uTgmpaFLJ6w=16/03/2017 16:06:4230/03/2017 11:03:02</TimeStamp>
+      <ID>
+        <String>ProjetMultidimensionnel4</String>
+      </ID>
+    </DatabaseSnapshot>
+    <Granularity>Coarse</Granularity>
+  </Snapshot>
+  <AssemblyLocations />
+  <ProcessingComplete>true</ProcessingComplete>
+  <LastDeployed>2017-03-30T10:11:16.706667Z</LastDeployed>
+</DeploymentSnapshot>

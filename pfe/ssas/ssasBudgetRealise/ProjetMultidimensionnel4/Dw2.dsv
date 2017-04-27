@@ -1,0 +1,414 @@
+﻿<DataSourceView xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="7e459272-865d-45d1-b37c-538e8db952f2" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Dw2</ID>
+  <Name>Dw2</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:CurrentLayout</Name>
+      <Value>_ALL_TABLES_</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:SchemaRestriction</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:RetrieveRelationships</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:Layouts</Name>
+      <Value>
+        <Layouts xmlns="">
+          <Diagram>
+            <Name>_ALL_TABLES_</Name>
+            <DiagramLayout />
+            <ShowRelationshipNames>False</ShowRelationshipNames>
+            <UseDiagramDefaultLayout>True</UseDiagramDefaultLayout>
+            <DiagramViewPortLeft>0</DiagramViewPortLeft>
+            <DiagramViewPortTop>0</DiagramViewPortTop>
+            <DiagramBoundingLeft>0</DiagramBoundingLeft>
+            <DiagramBoundingTop>0</DiagramBoundingTop>
+            <DiagramZoom>100</DiagramZoom>
+          </Diagram>
+        </Layouts>
+      </Value>
+    </Annotation>
+  </Annotations>
+  <DataSourceID>Dw2</DataSourceID>
+  <Schema>
+    <xs:schema id="Dw2" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
+      <xs:element name="Dw2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:design-time-name="01265bc7-0c4e-4a9e-bd9c-d0a826a2ef32">
+        <xs:complexType>
+          <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="dbo_DimArrondissement" msprop:design-time-name="4704c8c2-c358-45cb-a494-98c5bf359354" msprop:FriendlyName="DimArrondissement" msprop:DbSchemaName="dbo" msprop:DbTableName="DimArrondissement" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Code" msprop:design-time-name="f81ca716-4ecf-4c7a-803e-dd5f5aea792c" msprop:DbColumnName="Code" msprop:FriendlyName="Code">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="CODE_COMMUNE" msprop:design-time-name="2b84b56c-c416-41ea-bb1b-c308a73a6f44" msprop:DbColumnName="CODE_COMMUNE" msprop:FriendlyName="CODE_COMMUNE">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Libelle" msprop:design-time-name="927ceb24-dd74-48a9-9021-8330e15addaf" msprop:DbColumnName="Libelle" msprop:FriendlyName="Libelle">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_DimArticle" msprop:design-time-name="a0d6c9f1-2b8d-4164-9ebd-2630e1744b46" msprop:FriendlyName="DimArticle" msprop:DbSchemaName="dbo" msprop:DbTableName="DimArticle" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CodeArcticle" msprop:design-time-name="75f58bb2-fcc7-4cd7-9f36-f89f4c711868" msprop:DbColumnName="CodeArcticle" msprop:FriendlyName="CodeArcticle">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="CodeRedevable" msprop:design-time-name="9b24e9d5-a2ea-4e66-b508-eb54b940bbb2" msprop:DbColumnName="CodeRedevable" msprop:FriendlyName="CodeRedevable" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="CODE_COMMUNE" msprop:design-time-name="535240e8-5411-42f1-864a-e86cd43e17d7" msprop:DbColumnName="CODE_COMMUNE" msprop:FriendlyName="CODE_COMMUNE">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="mntTIB" msprop:design-time-name="d2cd03e1-7f7e-4c68-a0bd-91b5d243cd6d" msprop:DbColumnName="mntTIB" msprop:FriendlyName="mntTIB" type="xs:double" minOccurs="0" />
+                  <xs:element name="mntFNAH" msprop:design-time-name="97baada2-aa09-4e9f-a249-940e9b9f3418" msprop:DbColumnName="mntFNAH" msprop:FriendlyName="mntFNAH" type="xs:double" minOccurs="0" />
+                  <xs:element name="mntTaxe" msprop:design-time-name="203b5f89-5059-481c-9624-d30e3d427ae2" msprop:DbColumnName="mntTaxe" msprop:FriendlyName="mntTaxe" type="xs:double" minOccurs="0" />
+                  <xs:element name="adress" msprop:design-time-name="42f60e1e-2fa1-46d4-a9a9-cf0bb1894e02" msprop:DbColumnName="adress" msprop:FriendlyName="adress" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="200" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_DimCommune" msprop:design-time-name="2d45bf62-e443-4b93-aaf4-05088e3ff8a4" msprop:FriendlyName="DimCommune" msprop:DbSchemaName="dbo" msprop:DbTableName="DimCommune" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CODE" msprop:design-time-name="86f8e77c-78a4-4c57-bdf5-449c75120189" msprop:DbColumnName="CODE" msprop:FriendlyName="CODE">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="LIBELLE" msprop:design-time-name="40d060a0-0e58-4abd-acde-6bf6cc76570f" msprop:DbColumnName="LIBELLE" msprop:FriendlyName="LIBELLE">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_DimGouvernorat" msprop:design-time-name="bc714542-bf83-4c48-b572-7e02327292bc" msprop:FriendlyName="DimGouvernorat" msprop:DbSchemaName="dbo" msprop:DbTableName="DimGouvernorat" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="CodeGouv" msprop:design-time-name="11284c1c-c2f6-462d-8b86-ddbf75c721c4" msprop:DbColumnName="CodeGouv" msprop:FriendlyName="CodeGouv">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="LibelleAr" msprop:design-time-name="73758911-df4c-41de-b78d-648bafa7708b" msprop:DbColumnName="LibelleAr" msprop:FriendlyName="LibelleAr" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="LibelleFr" msprop:design-time-name="1d122554-5087-43ef-852e-f6b49ab43e68" msprop:DbColumnName="LibelleFr" msprop:FriendlyName="LibelleFr" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_DimRue" msprop:design-time-name="4744a116-a8f6-4be4-90ac-4b36c47d8f8c" msprop:FriendlyName="DimRue" msprop:DbSchemaName="dbo" msprop:DbTableName="DimRue" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Code" msprop:design-time-name="cc2e84da-ad8d-4d43-9332-e42667d1d8ce" msprop:DbColumnName="Code" msprop:FriendlyName="Code">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Commune" msprop:design-time-name="bbcb71be-ae6b-4e42-afde-1d9bed34f4c2" msprop:DbColumnName="Commune" msprop:FriendlyName="Commune">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Libelle" msprop:design-time-name="934c0f42-6ae3-49e8-9415-e4f70b7f0c2b" msprop:DbColumnName="Libelle" msprop:FriendlyName="Libelle" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_DimTemps" msprop:design-time-name="9e4bf2ef-71cc-420e-8856-925ff911de61" msprop:FriendlyName="DimTemps" msprop:DbSchemaName="dbo" msprop:DbTableName="DimTemps" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="date" msprop:design-time-name="dd1c546b-27fc-4223-8401-974ca86465b2" msprop:DbColumnName="date" msprop:FriendlyName="date" type="xs:dateTime" />
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_DimType_Article" msprop:design-time-name="9eb3c91c-8052-40e2-959e-c75dfc569e9b" msprop:FriendlyName="DimType_Article" msprop:DbSchemaName="dbo" msprop:DbTableName="DimType_Article" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Code" msprop:design-time-name="529d830d-1a09-403d-b350-e1c4201adae7" msprop:DbColumnName="Code" msprop:FriendlyName="Code">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Libelle" msprop:design-time-name="110d3130-b20d-4619-98b7-e909f761f70d" msprop:DbColumnName="Libelle" msprop:FriendlyName="Libelle" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_FaitBudgetRealise" msprop:design-time-name="0f26ed33-3ea8-4260-baac-78c116c0a231" msprop:FriendlyName="FaitBudgetRealise" msprop:DbSchemaName="dbo" msprop:DbTableName="FaitBudgetRealise" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="codeQuittance" msprop:design-time-name="a1fce601-f87f-45c8-82db-87870d43a728" msprop:DbColumnName="codeQuittance" msprop:FriendlyName="codeQuittance">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="codeCommune" msprop:design-time-name="c188bc56-c5b3-499c-a254-5b4f9682f814" msprop:DbColumnName="codeCommune" msprop:FriendlyName="codeCommune">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="codeArticle" msprop:design-time-name="75f49248-dc83-49f8-8576-1be85798ad33" msprop:DbColumnName="codeArticle" msprop:FriendlyName="codeArticle" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="codeTypeArticle" msprop:design-time-name="16f08709-54cc-4103-9ac8-d80e34a538b9" msprop:DbColumnName="codeTypeArticle" msprop:FriendlyName="codeTypeArticle" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="codeGouvernorat" msprop:design-time-name="02172705-e018-42e7-8662-31ed59c740d1" msprop:DbColumnName="codeGouvernorat" msprop:FriendlyName="codeGouvernorat" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="CodeRedevable" msprop:design-time-name="7c13fdac-77d3-4f9d-b39a-38d7d51af1d9" msprop:DbColumnName="CodeRedevable" msprop:FriendlyName="CodeRedevable" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="nom" msprop:design-time-name="32ce9b6b-2e45-41c1-886f-7db42186e96f" msprop:DbColumnName="nom" msprop:FriendlyName="nom" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="200" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="codeRue" msprop:design-time-name="684cc330-08df-4a91-9235-0345b250bc83" msprop:DbColumnName="codeRue" msprop:FriendlyName="codeRue" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="montantTotal" msprop:design-time-name="3bb39f7d-8441-4bde-9fb3-a98b4c7a7e95" msprop:DbColumnName="montantTotal" msprop:FriendlyName="montantTotal" type="xs:decimal" minOccurs="0" />
+                  <xs:element name="dateQuittance" msprop:design-time-name="d6a5564f-2060-4406-9c8f-76f5c8b4b5e2" msprop:DbColumnName="dateQuittance" msprop:FriendlyName="dateQuittance" type="xs:dateTime" minOccurs="0" />
+                  <xs:element name="codeArrondissement" msprop:design-time-name="28b9128c-10c4-4acd-a11d-fb582c6df7f2" msprop:DbColumnName="codeArrondissement" msprop:FriendlyName="codeArrondissement" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="Time" msprop:design-time-name="fa7222ee-f88f-480b-8452-5d710393bd3c" msprop:FriendlyName="Time" msprop:DbSchemaName="dbo" msprop:AllowGen="True" msprop:TableType="Table" msprop:DbTableName="Time">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="Date" msprop:design-time-name="b956cabf-2cfb-4d93-8cd5-41cb428fc043" msprop:AllowGen="True" msprop:DbColumnName="PK_Date" msprop:FriendlyName="PK_Date" type="xs:dateTime" />
+                  <xs:element name="Date_Name" msprop:design-time-name="d57d20ef-9248-4b01-bf34-20d928934fe7" msprop:AllowGen="True" msprop:DbColumnName="Date_Name" msprop:FriendlyName="Date_Name" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Year" msprop:design-time-name="26b081d7-108c-4f2e-8141-cd483481e04a" msprop:AllowGen="True" msprop:DbColumnName="Year" msprop:FriendlyName="Year" type="xs:dateTime" minOccurs="0" />
+                  <xs:element name="Year_Name" msprop:design-time-name="760798ea-512f-4f8f-804c-0c8079fff3b1" msprop:AllowGen="True" msprop:DbColumnName="Year_Name" msprop:FriendlyName="Year_Name" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Month" msprop:design-time-name="5c35b0af-a094-4183-b577-7155cfca23c5" msprop:AllowGen="True" msprop:DbColumnName="Month" msprop:FriendlyName="Month" type="xs:dateTime" minOccurs="0" />
+                  <xs:element name="Month_Name" msprop:design-time-name="56861070-663e-4487-9e2b-4e3a978ae342" msprop:AllowGen="True" msprop:DbColumnName="Month_Name" msprop:FriendlyName="Month_Name" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Day_Of_Year" msprop:design-time-name="0fd68ab9-0e64-4d03-a203-b5d8862987b8" msprop:AllowGen="True" msprop:DbColumnName="Day_Of_Year" msprop:FriendlyName="Day_Of_Year" type="xs:int" minOccurs="0" />
+                  <xs:element name="Day_Of_Year_Name" msprop:design-time-name="a605188e-067f-49d8-95e1-a6b8c0eb3dfb" msprop:AllowGen="True" msprop:DbColumnName="Day_Of_Year_Name" msprop:FriendlyName="Day_Of_Year_Name" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Day_Of_Month" msprop:design-time-name="330414cb-c8da-43ae-86e5-d47b2f483c25" msprop:AllowGen="True" msprop:DbColumnName="Day_Of_Month" msprop:FriendlyName="Day_Of_Month" type="xs:int" minOccurs="0" />
+                  <xs:element name="Day_Of_Month_Name" msprop:design-time-name="a4432ccb-d9c3-4f6e-a88d-7c92ea19e9c8" msprop:AllowGen="True" msprop:DbColumnName="Day_Of_Month_Name" msprop:FriendlyName="Day_Of_Month_Name" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                  <xs:element name="Month_Of_Year" msprop:design-time-name="85864f3a-6cfd-4125-85ee-8a9e49a99c16" msprop:AllowGen="True" msprop:DbColumnName="Month_Of_Year" msprop:FriendlyName="Month_Of_Year" type="xs:int" minOccurs="0" />
+                  <xs:element name="Month_Of_Year_Name" msprop:design-time-name="032dfe59-1c08-4a98-8774-a8aba5cbb448" msprop:AllowGen="True" msprop:DbColumnName="Month_Of_Year_Name" msprop:FriendlyName="Month_Of_Year_Name" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="50" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+          </xs:choice>
+        </xs:complexType>
+        <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_DimArrondissement" />
+          <xs:field xpath="Code" />
+          <xs:field xpath="CODE_COMMUNE" />
+        </xs:unique>
+        <xs:unique name="dbo_DimArticle_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_DimArticle" />
+          <xs:field xpath="CodeArcticle" />
+          <xs:field xpath="CODE_COMMUNE" />
+        </xs:unique>
+        <xs:unique name="dbo_DimCommune_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_DimCommune" />
+          <xs:field xpath="CODE" />
+        </xs:unique>
+        <xs:unique name="dbo_DimGouvernorat_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_DimGouvernorat" />
+          <xs:field xpath="CodeGouv" />
+        </xs:unique>
+        <xs:unique name="dbo_DimRue_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_DimRue" />
+          <xs:field xpath="Code" />
+          <xs:field xpath="Commune" />
+        </xs:unique>
+        <xs:unique name="dbo_DimTemps_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_DimTemps" />
+          <xs:field xpath="date" />
+        </xs:unique>
+        <xs:unique name="dbo_DimType_Article_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_DimType_Article" />
+          <xs:field xpath="Code" />
+        </xs:unique>
+        <xs:unique name="dbo_FaitBudgetRealise_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//dbo_FaitBudgetRealise" />
+          <xs:field xpath="codeQuittance" />
+          <xs:field xpath="codeCommune" />
+        </xs:unique>
+        <xs:unique name="PK_Time" msprop:AllowGen="True" msdata:PrimaryKey="true">
+          <xs:selector xpath=".//Time" />
+          <xs:field xpath="Date" />
+        </xs:unique>
+        <xs:keyref name="FK_Quittance_DimArticle" refer="dbo_DimArticle_Constraint1">
+          <xs:selector xpath=".//dbo_FaitBudgetRealise" />
+          <xs:field xpath="codeArticle" />
+          <xs:field xpath="codeCommune" />
+        </xs:keyref>
+        <xs:keyref name="FK_FaitBudgetRealise_DimTemps" refer="dbo_DimTemps_Constraint1">
+          <xs:selector xpath=".//dbo_FaitBudgetRealise" />
+          <xs:field xpath="dateQuittance" />
+        </xs:keyref>
+        <xs:keyref name="FK_Quittance_DimGouvernorat" refer="dbo_DimGouvernorat_Constraint1">
+          <xs:selector xpath=".//dbo_FaitBudgetRealise" />
+          <xs:field xpath="codeGouvernorat" />
+        </xs:keyref>
+        <xs:keyref name="FK_Quittance_DimRue" refer="dbo_DimRue_Constraint1">
+          <xs:selector xpath=".//dbo_FaitBudgetRealise" />
+          <xs:field xpath="codeRue" />
+          <xs:field xpath="codeCommune" />
+        </xs:keyref>
+        <xs:keyref name="FK_Quittance_DimType_Article" refer="dbo_DimType_Article_Constraint1">
+          <xs:selector xpath=".//dbo_FaitBudgetRealise" />
+          <xs:field xpath="codeTypeArticle" />
+        </xs:keyref>
+        <xs:keyref name="FK_Quittance_DimCommune" refer="dbo_DimCommune_Constraint1">
+          <xs:selector xpath=".//dbo_FaitBudgetRealise" />
+          <xs:field xpath="codeCommune" />
+        </xs:keyref>
+        <xs:keyref name="FK_Quittance_DimArrondissement" refer="Constraint1">
+          <xs:selector xpath=".//dbo_FaitBudgetRealise" />
+          <xs:field xpath="codeArrondissement" />
+          <xs:field xpath="codeCommune" />
+        </xs:keyref>
+      </xs:element>
+    </xs:schema>
+    <Dw2 xmlns="" />
+  </Schema>
+</DataSourceView>

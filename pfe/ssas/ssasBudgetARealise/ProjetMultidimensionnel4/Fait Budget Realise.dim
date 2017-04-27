@@ -1,0 +1,290 @@
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="519466fa-863a-4014-b428-3ac85d41d697" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+  <ID>Fait Budget Realise</ID>
+  <Name>Fait Budget Realise</Name>
+  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <Annotations>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowFriendlyNames</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:ShowRelationshipNames</Name>
+      <Value>false</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:UseDiagramDefaultLayout</Name>
+      <Value>true</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramViewPortTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingLeft</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramBoundingTop</Name>
+      <Value>0</Value>
+    </Annotation>
+    <Annotation>
+      <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramZoom</Name>
+      <Value>100</Value>
+    </Annotation>
+  </Annotations>
+  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <State>Unprocessed</State>
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="b5ebd11e-78e0-42c2-b44b-cad98a23fcd2">
+    <DataSourceViewID>Dw2</DataSourceViewID>
+  </Source>
+  <ErrorConfiguration dwd:design-time-name="b47f510b-b9c3-484b-8412-8d295cc305be">
+    <KeyNotFound>ReportAndStop</KeyNotFound>
+    <KeyDuplicate>ReportAndStop</KeyDuplicate>
+    <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
+  </ErrorConfiguration>
+  <CurrentStorageMode>Molap</CurrentStorageMode>
+  <Attributes>
+    <Attribute dwd:design-time-name="54d7df5c-b913-4c0d-ab88-c1e630e633fb">
+      <ID>Code Quittance</ID>
+      <Name>Code Quittance</Name>
+      <Usage>Key</Usage>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="7eb24c88-034d-4e7e-aaef-d2d687ff31ac">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c1fa0832-632f-48e6-8eba-612a69d7b3c3">
+            <TableID>dbo_FaitBudgetRealise</TableID>
+            <ColumnID>codeQuittance</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="7d5e6ea6-49c6-47fa-8516-ac3d6ea26e39">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="99a83c19-fd26-4d31-a3ce-f56e79cf2f27">
+            <TableID>dbo_FaitBudgetRealise</TableID>
+            <ColumnID>codeCommune</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="ce486408-cf12-47a2-b7b2-957f91576c9b">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="88720c2e-b99f-4105-ab56-37b9b1c12159">
+          <TableID>dbo_FaitBudgetRealise</TableID>
+          <ColumnID>codeQuittance</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeRelationships>
+        <AttributeRelationship dwd:design-time-name="2167f06e-2021-40d7-9a2f-7dd340647f78">
+          <AttributeID>Code Article</AttributeID>
+          <Name>Code Article</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="d2937984-3ff7-49a6-8d24-07700e67d458">
+          <AttributeID>Date Quittance</AttributeID>
+          <Name>Date Quittance</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="6f97363f-49eb-4b8f-98df-d98e52cba165">
+          <AttributeID>Code Gouvernorat</AttributeID>
+          <Name>Code Gouvernorat</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="2882f14f-5292-470f-b9d0-52ae00cd04c7">
+          <AttributeID>Code Rue</AttributeID>
+          <Name>Code Rue</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="60e20ef1-b368-4030-97c4-f93d94df8f36">
+          <AttributeID>Code Type Article</AttributeID>
+          <Name>Code Type Article</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="3fbdf63c-4ad0-47d0-aee9-8e5a840e5ade">
+          <AttributeID>Code Commune</AttributeID>
+          <Name>Code Commune</Name>
+        </AttributeRelationship>
+        <AttributeRelationship dwd:design-time-name="4a457b4d-2534-4e7b-9c44-9f6b728c615f">
+          <AttributeID>Code Arrondissement</AttributeID>
+          <Name>Code Arrondissement</Name>
+        </AttributeRelationship>
+      </AttributeRelationships>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="8c630a2c-d5b6-43d7-89f6-46f8720275ef">
+      <ID>Code Article</ID>
+      <Name>Code Article</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="499fe4ab-c29a-47bd-b8e0-03b55e7976c0">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="348052c6-d032-4997-98b6-74eae8178e25">
+            <TableID>dbo_FaitBudgetRealise</TableID>
+            <ColumnID>codeArticle</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="c31b20e7-7b0e-41b4-9a94-175fcc993aa8">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="2abc380e-c526-483c-8c07-1833617e4b13">
+            <TableID>dbo_FaitBudgetRealise</TableID>
+            <ColumnID>codeCommune</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="80af4d68-f9c7-4879-8e9e-78d649fefff8">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="bd5c95ae-d996-4b2e-a429-80419f20dc8b">
+          <TableID>dbo_FaitBudgetRealise</TableID>
+          <ColumnID>codeArticle</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="05c2c541-b81c-4bf9-9899-3a91a2c26dd1">
+      <ID>Date Quittance</ID>
+      <Name>Date Quittance</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="5b132f4b-0a35-4e27-967f-bf02b1d16fa4">
+          <DataType>Date</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="bf2d1b89-59bb-4521-8634-dea52be4f40c">
+            <TableID>dbo_FaitBudgetRealise</TableID>
+            <ColumnID>dateQuittance</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="022b2bca-63d1-4429-ac62-1c291e431007">
+      <ID>Code Gouvernorat</ID>
+      <Name>Code Gouvernorat</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="f27f1977-3033-4271-9528-d17a12c6894b">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f14b649f-6f2c-49e5-baa9-23d9eaa09fd3">
+            <TableID>dbo_FaitBudgetRealise</TableID>
+            <ColumnID>codeGouvernorat</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="2e78affa-fcbd-4612-9974-2eb10a672245">
+      <ID>Code Rue</ID>
+      <Name>Code Rue</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="5d242fb9-d341-4bb3-877f-108ca269c0d1">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="9b79cd6d-5984-4a88-82ad-c520c480c6a0">
+            <TableID>dbo_FaitBudgetRealise</TableID>
+            <ColumnID>codeRue</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="989986a0-cc26-462b-8fff-589c26f2e643">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4db1a901-2eeb-4ad2-acc3-5dab44b72d72">
+            <TableID>dbo_FaitBudgetRealise</TableID>
+            <ColumnID>codeCommune</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="5b6f14fa-1e3c-4731-a449-84e66696bb37">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="d8d7af6e-8896-4256-94a6-5c4b54204121">
+          <TableID>dbo_FaitBudgetRealise</TableID>
+          <ColumnID>codeRue</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="e63362e1-0298-4417-95be-ca78d164b508">
+      <ID>Code Type Article</ID>
+      <Name>Code Type Article</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="0bef9156-8ab2-4cac-a188-0ab61bb84d85">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="92378100-103f-4c02-8b71-5d4a8845c893">
+            <TableID>dbo_FaitBudgetRealise</TableID>
+            <ColumnID>codeTypeArticle</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="b108e721-299f-4c2e-8c6d-a8dcde958e95">
+      <ID>Code Commune</ID>
+      <Name>Code Commune</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="0820a5f4-8153-4e1b-ad46-d5ecf11e220a">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="e5a4cdb1-f1fa-45c2-add3-c5c080352ba0">
+            <TableID>dbo_FaitBudgetRealise</TableID>
+            <ColumnID>codeCommune</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <OrderBy>Key</OrderBy>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+    <Attribute dwd:design-time-name="d630044a-3a8d-4bfc-877f-e249acdcf3bb">
+      <ID>Code Arrondissement</ID>
+      <Name>Code Arrondissement</Name>
+      <KeyColumns>
+        <KeyColumn dwd:design-time-name="fe240da9-4b7e-4c28-9ba8-6dc93272f467">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="411b5756-38d2-41ed-8dcb-25e067212ebc">
+            <TableID>dbo_FaitBudgetRealise</TableID>
+            <ColumnID>codeArrondissement</ColumnID>
+          </Source>
+        </KeyColumn>
+        <KeyColumn dwd:design-time-name="a7b04d2c-0905-4568-a840-1b5b3ac0d2b6">
+          <DataType>WChar</DataType>
+          <DataSize>50</DataSize>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="68e3d020-cacc-42aa-8442-eb15e568527e">
+            <TableID>dbo_FaitBudgetRealise</TableID>
+            <ColumnID>codeCommune</ColumnID>
+          </Source>
+        </KeyColumn>
+      </KeyColumns>
+      <NameColumn dwd:design-time-name="a6781e77-5d8c-498c-b946-dae2fcc2f918">
+        <DataType>WChar</DataType>
+        <DataSize>50</DataSize>
+        <Source xsi:type="ColumnBinding" dwd:design-time-name="e4f1c600-743d-40dc-9529-f251da0efa57">
+          <TableID>dbo_FaitBudgetRealise</TableID>
+          <ColumnID>codeArrondissement</ColumnID>
+        </Source>
+      </NameColumn>
+      <AttributeHierarchyVisible>false</AttributeHierarchyVisible>
+      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
+      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
+    </Attribute>
+  </Attributes>
+  <ddl300:ProcessingState>Unprocessed</ddl300:ProcessingState>
+</Dimension>

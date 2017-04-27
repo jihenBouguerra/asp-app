@@ -1,0 +1,886 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/1/2017 10:05:24 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="JIHEN"
+  DTS:CreatorName="JIHEN\bouguerra"
+  DTS:DTSID="{B8DE87F9-E0EE-4EBB-A6DF-F47D1B18195B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="StatiqueCommunes"
+  DTS:PackageType="5"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{DD355818-278D-4F0E-B7CD-469C4F2C7481}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[172.16.40.48.RECETTE_CARTHAGE.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{3ECE3C4E-CE0D-4837-B26B-EB0D81D2EB26}"
+      DTS:ObjectName="172.16.40.48.RECETTE_CARTHAGE.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=172.16.40.48;User ID=sa;Initial Catalog=RECETTE_CARTHAGE;Provider=SQLNCLI11.1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[172.16.40.48.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{2C352E01-2740-4E91-9BE6-14644366974A}"
+      DTS:ObjectName="172.16.40.48.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=172.16.40.48;User ID=sa;Provider=SQLNCLI11.1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[172.16.40.48.TAXE_CARTHAGE.sa]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{9BBC8752-3DC0-4108-AE89-0CA02F53E75E}"
+      DTS:ObjectName="172.16.40.48.TAXE_CARTHAGE.sa">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=172.16.40.48;User ID=sa;Initial Catalog=TAXE_CARTHAGE;Provider=SQLNCLI11.1;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[JIHEN.BIProjet]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{D436C274-62C4-492F-91C6-69C335516388}"
+      DTS:ObjectName="JIHEN.BIProjet">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=JIHEN;Initial Catalog=BIProjet;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[JIHEN.Gouvernorat]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{B56ABD5B-8570-4680-A50D-29079D07600D}"
+      DTS:ObjectName="JIHEN.Gouvernorat">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=JIHEN;Initial Catalog=Gouvernorat;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[local]"
+      DTS:CreationName="ADO.NET:SQL"
+      DTS:DTSID="{F144A687-6564-4830-B51A-DD6F0FB40996}"
+      DTS:ObjectName="local">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=JIHEN;Integrated Security=SSPI;Connect Timeout=30;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\import des données"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{7A71F930-10E0-4093-9EBE-650455C7DDF2}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="import des données"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\import des données\Destination Communes"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="Destination Communes"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[COMMUNES]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">5420402</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\import des données\Destination Communes.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[JIHEN.BIProjet]"
+                  connectionManagerRefId="Package.ConnectionManagers[JIHEN.BIProjet]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\import des données\Destination Communes.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\import des données\Destination Communes.Inputs[Entrée de destination OLE DB].Columns[CODE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="CODE"
+                      externalMetadataColumnId="Package\import des données\Destination Communes.Inputs[Entrée de destination OLE DB].ExternalColumns[CODE]"
+                      lineageId="Package\import des données\Source communes.Outputs[Sortie de source OLE DB].Columns[CODE]" />
+                    <inputColumn
+                      refId="Package\import des données\Destination Communes.Inputs[Entrée de destination OLE DB].Columns[CODE_GOUVERNORAT]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="CODE_GOUVERNORAT"
+                      externalMetadataColumnId="Package\import des données\Destination Communes.Inputs[Entrée de destination OLE DB].ExternalColumns[CODE_GOUVERNORAT]"
+                      lineageId="Package\import des données\Source communes.Outputs[Sortie de source OLE DB].Columns[CODE_GOUVERNORAT]" />
+                    <inputColumn
+                      refId="Package\import des données\Destination Communes.Inputs[Entrée de destination OLE DB].Columns[LIBELLE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="LIBELLE"
+                      externalMetadataColumnId="Package\import des données\Destination Communes.Inputs[Entrée de destination OLE DB].ExternalColumns[LIBELLE]"
+                      lineageId="Package\import des données\Source communes.Outputs[Sortie de source OLE DB].Columns[LIBELLE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\import des données\Destination Communes.Inputs[Entrée de destination OLE DB].ExternalColumns[CODE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="5"
+                      name="CODE" />
+                    <externalMetadataColumn
+                      refId="Package\import des données\Destination Communes.Inputs[Entrée de destination OLE DB].ExternalColumns[CODE_GOUVERNORAT]"
+                      codePage="1256"
+                      dataType="str"
+                      length="5"
+                      name="CODE_GOUVERNORAT" />
+                    <externalMetadataColumn
+                      refId="Package\import des données\Destination Communes.Inputs[Entrée de destination OLE DB].ExternalColumns[LIBELLE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="20"
+                      name="LIBELLE" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\import des données\Destination Communes.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\import des données\Destination Communes.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\import des données\Destination Communes.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\import des données\Destination Communes.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\import des données\Destination Communes.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\import des données\Destination Communes.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\import des données\Destination Gouvernorat"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="Destination Gouvernorat"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Gouvernorat]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\import des données\Destination Gouvernorat.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[JIHEN.BIProjet]"
+                  connectionManagerRefId="Package.ConnectionManagers[JIHEN.BIProjet]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\import des données\Destination Gouvernorat.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\import des données\Destination Gouvernorat.Inputs[Entrée de destination OLE DB].Columns[CodeGouv]"
+                      cachedDataType="i4"
+                      cachedName="CodeGouv"
+                      externalMetadataColumnId="Package\import des données\Destination Gouvernorat.Inputs[Entrée de destination OLE DB].ExternalColumns[CodeGouv]"
+                      lineageId="Package\import des données\Source Gouvernorat.Outputs[Sortie de source OLE DB].Columns[CodeGouv]" />
+                    <inputColumn
+                      refId="Package\import des données\Destination Gouvernorat.Inputs[Entrée de destination OLE DB].Columns[LibelleAr]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="LibelleAr"
+                      externalMetadataColumnId="Package\import des données\Destination Gouvernorat.Inputs[Entrée de destination OLE DB].ExternalColumns[LibelleAr]"
+                      lineageId="Package\import des données\Source Gouvernorat.Outputs[Sortie de source OLE DB].Columns[LibelleAr]" />
+                    <inputColumn
+                      refId="Package\import des données\Destination Gouvernorat.Inputs[Entrée de destination OLE DB].Columns[LibelleFr]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="LibelleFr"
+                      externalMetadataColumnId="Package\import des données\Destination Gouvernorat.Inputs[Entrée de destination OLE DB].ExternalColumns[LibelleFr]"
+                      lineageId="Package\import des données\Source Gouvernorat.Outputs[Sortie de source OLE DB].Columns[LibelleFr]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\import des données\Destination Gouvernorat.Inputs[Entrée de destination OLE DB].ExternalColumns[CodeGouv]"
+                      dataType="i4"
+                      name="CodeGouv" />
+                    <externalMetadataColumn
+                      refId="Package\import des données\Destination Gouvernorat.Inputs[Entrée de destination OLE DB].ExternalColumns[LibelleAr]"
+                      codePage="1256"
+                      dataType="str"
+                      length="255"
+                      name="LibelleAr" />
+                    <externalMetadataColumn
+                      refId="Package\import des données\Destination Gouvernorat.Inputs[Entrée de destination OLE DB].ExternalColumns[LibelleFr]"
+                      codePage="1256"
+                      dataType="str"
+                      length="255"
+                      name="LibelleFr" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\import des données\Destination Gouvernorat.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\import des données\Destination Gouvernorat.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\import des données\Destination Gouvernorat.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\import des données\Destination Gouvernorat.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\import des données\Destination Gouvernorat.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\import des données\Destination Gouvernorat.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\import des données\Source communes"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="Source communes"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[COMMUNES]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\import des données\Source communes.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[172.16.40.48.RECETTE_CARTHAGE.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[172.16.40.48.RECETTE_CARTHAGE.sa]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\import des données\Source communes.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\import des données\Source communes.Outputs[Sortie de source OLE DB].Columns[CODE]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\import des données\Source communes.Outputs[Sortie de source OLE DB].ExternalColumns[CODE]"
+                      length="5"
+                      lineageId="Package\import des données\Source communes.Outputs[Sortie de source OLE DB].Columns[CODE]"
+                      name="CODE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\import des données\Source communes.Outputs[Sortie de source OLE DB].Columns[CODE_GOUVERNORAT]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\import des données\Source communes.Outputs[Sortie de source OLE DB].ExternalColumns[CODE_GOUVERNORAT]"
+                      length="5"
+                      lineageId="Package\import des données\Source communes.Outputs[Sortie de source OLE DB].Columns[CODE_GOUVERNORAT]"
+                      name="CODE_GOUVERNORAT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\import des données\Source communes.Outputs[Sortie de source OLE DB].Columns[LIBELLE]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\import des données\Source communes.Outputs[Sortie de source OLE DB].ExternalColumns[LIBELLE]"
+                      length="100"
+                      lineageId="Package\import des données\Source communes.Outputs[Sortie de source OLE DB].Columns[LIBELLE]"
+                      name="LIBELLE"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\import des données\Source communes.Outputs[Sortie de source OLE DB].ExternalColumns[CODE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="5"
+                      name="CODE" />
+                    <externalMetadataColumn
+                      refId="Package\import des données\Source communes.Outputs[Sortie de source OLE DB].ExternalColumns[CODE_GOUVERNORAT]"
+                      codePage="1256"
+                      dataType="str"
+                      length="5"
+                      name="CODE_GOUVERNORAT" />
+                    <externalMetadataColumn
+                      refId="Package\import des données\Source communes.Outputs[Sortie de source OLE DB].ExternalColumns[LIBELLE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="100"
+                      name="LIBELLE" />
+                    <externalMetadataColumn
+                      refId="Package\import des données\Source communes.Outputs[Sortie de source OLE DB].ExternalColumns[ADRESSE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="200"
+                      name="ADRESSE" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\import des données\Source communes.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\import des données\Source communes.Outputs[Sortie d'erreur de source OLE DB].Columns[CODE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\import des données\Source communes.Outputs[Sortie d'erreur de source OLE DB].Columns[CODE]"
+                      name="CODE" />
+                    <outputColumn
+                      refId="Package\import des données\Source communes.Outputs[Sortie d'erreur de source OLE DB].Columns[CODE_GOUVERNORAT]"
+                      codePage="1256"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\import des données\Source communes.Outputs[Sortie d'erreur de source OLE DB].Columns[CODE_GOUVERNORAT]"
+                      name="CODE_GOUVERNORAT" />
+                    <outputColumn
+                      refId="Package\import des données\Source communes.Outputs[Sortie d'erreur de source OLE DB].Columns[LIBELLE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\import des données\Source communes.Outputs[Sortie d'erreur de source OLE DB].Columns[LIBELLE]"
+                      name="LIBELLE" />
+                    <outputColumn
+                      refId="Package\import des données\Source communes.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\import des données\Source communes.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\import des données\Source communes.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\import des données\Source communes.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\import des données\Source Gouvernorat"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="Source Gouvernorat"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Gouvernorat]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\import des données\Source Gouvernorat.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[172.16.40.48.TAXE_CARTHAGE.sa]"
+                  connectionManagerRefId="Package.ConnectionManagers[172.16.40.48.TAXE_CARTHAGE.sa]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\import des données\Source Gouvernorat.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\import des données\Source Gouvernorat.Outputs[Sortie de source OLE DB].Columns[CodeGouv]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\import des données\Source Gouvernorat.Outputs[Sortie de source OLE DB].ExternalColumns[CodeGouv]"
+                      lineageId="Package\import des données\Source Gouvernorat.Outputs[Sortie de source OLE DB].Columns[CodeGouv]"
+                      name="CodeGouv"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\import des données\Source Gouvernorat.Outputs[Sortie de source OLE DB].Columns[LibelleAr]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\import des données\Source Gouvernorat.Outputs[Sortie de source OLE DB].ExternalColumns[LibelleAr]"
+                      length="255"
+                      lineageId="Package\import des données\Source Gouvernorat.Outputs[Sortie de source OLE DB].Columns[LibelleAr]"
+                      name="LibelleAr"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\import des données\Source Gouvernorat.Outputs[Sortie de source OLE DB].Columns[LibelleFr]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\import des données\Source Gouvernorat.Outputs[Sortie de source OLE DB].ExternalColumns[LibelleFr]"
+                      length="255"
+                      lineageId="Package\import des données\Source Gouvernorat.Outputs[Sortie de source OLE DB].Columns[LibelleFr]"
+                      name="LibelleFr"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\import des données\Source Gouvernorat.Outputs[Sortie de source OLE DB].ExternalColumns[CodeGouv]"
+                      dataType="i4"
+                      name="CodeGouv" />
+                    <externalMetadataColumn
+                      refId="Package\import des données\Source Gouvernorat.Outputs[Sortie de source OLE DB].ExternalColumns[LibelleAr]"
+                      codePage="1256"
+                      dataType="str"
+                      length="255"
+                      name="LibelleAr" />
+                    <externalMetadataColumn
+                      refId="Package\import des données\Source Gouvernorat.Outputs[Sortie de source OLE DB].ExternalColumns[LibelleFr]"
+                      codePage="1256"
+                      dataType="str"
+                      length="255"
+                      name="LibelleFr" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\import des données\Source Gouvernorat.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\import des données\Source Gouvernorat.Outputs[Sortie d'erreur de source OLE DB].Columns[CodeGouv]"
+                      dataType="i4"
+                      lineageId="Package\import des données\Source Gouvernorat.Outputs[Sortie d'erreur de source OLE DB].Columns[CodeGouv]"
+                      name="CodeGouv" />
+                    <outputColumn
+                      refId="Package\import des données\Source Gouvernorat.Outputs[Sortie d'erreur de source OLE DB].Columns[LibelleAr]"
+                      codePage="1256"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\import des données\Source Gouvernorat.Outputs[Sortie d'erreur de source OLE DB].Columns[LibelleAr]"
+                      name="LibelleAr" />
+                    <outputColumn
+                      refId="Package\import des données\Source Gouvernorat.Outputs[Sortie d'erreur de source OLE DB].Columns[LibelleFr]"
+                      codePage="1256"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\import des données\Source Gouvernorat.Outputs[Sortie d'erreur de source OLE DB].Columns[LibelleFr]"
+                      name="LibelleFr" />
+                    <outputColumn
+                      refId="Package\import des données\Source Gouvernorat.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\import des données\Source Gouvernorat.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\import des données\Source Gouvernorat.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\import des données\Source Gouvernorat.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\import des données.Paths[Sortie de source OLE DB]"
+              endId="Package\import des données\Destination Communes.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de source OLE DB"
+              startId="Package\import des données\Source communes.Outputs[Sortie de source OLE DB]" />
+            <path
+              refId="Package\import des données.Paths[Sortie de source OLE DB1]"
+              endId="Package\import des données\Destination Gouvernorat.Inputs[Entrée de destination OLE DB]"
+              name="Sortie de source OLE DB"
+              startId="Package\import des données\Source Gouvernorat.Outputs[Sortie de source OLE DB]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Vider table"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{E15238EE-3090-4CA3-B9BC-8A8F2E99F44F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Vider table"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{D436C274-62C4-492F-91C6-69C335516388}"
+          SQLTask:SqlStatementSource="DELETE FROM Gouvernorat;&#xA;DELETE FROM  COMMUNES" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{3A95F83C-98A8-476E-AB5E-1A64F2A1DEE6}"
+      DTS:From="Package\Vider table"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\import des données" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="172,42"
+          Id="Package\import des données"
+          TopLeft="128,113" />
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Vider table"
+          TopLeft="126,23" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="210.75,65">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48"
+              Start="0,0"
+              End="0,40.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\import des données">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="165,42"
+          Id="Package\import des données\Source communes"
+          TopLeft="26,19" />
+        <NodeLayout
+          Size="172,42"
+          Id="Package\import des données\Destination Communes"
+          TopLeft="20,133" />
+        <EdgeLayout
+          Id="Package\import des données.Paths[Sortie de source OLE DB]"
+          TopLeft="107.25,61">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,72"
+              Start="0,0"
+              End="0,64.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,64.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="173,42"
+          Id="Package\import des données\Source Gouvernorat"
+          TopLeft="219,17" />
+        <NodeLayout
+          Size="194,42"
+          Id="Package\import des données\Destination Gouvernorat"
+          TopLeft="211,96" />
+        <EdgeLayout
+          Id="Package\import des données.Paths[Sortie de source OLE DB1]"
+          TopLeft="306.75,59">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,37"
+              Start="0,0"
+              End="0,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\import des données\Source communes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\import des données\Destination Communes">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

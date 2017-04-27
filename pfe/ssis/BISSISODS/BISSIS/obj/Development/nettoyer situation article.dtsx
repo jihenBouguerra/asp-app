@@ -1,0 +1,3135 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="3/24/2017 1:04:39 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="JIHEN"
+  DTS:CreatorName="JIHEN\bouguerra"
+  DTS:DTSID="{DA10DA12-12B6-4B0C-8552-148A6A2308E7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="13.0.2165.0"
+  DTS:LocaleID="1036"
+  DTS:ObjectName="nettoyer situation article"
+  DTS:PackageType="5"
+  DTS:VersionBuild="10"
+  DTS:VersionGUID="{85CE1C8B-8266-47F6-AE49-D2148B198A58}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[JIHEN\JIIHEN.BIProjet]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{58F6CF82-1ABF-4B78-804C-CF743E169438}"
+      DTS:ObjectName="JIHEN\JIIHEN.BIProjet">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=JIHEN\JIIHEN;Initial Catalog=BIProjet;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[JIHEN\JIIHEN.db_recetteRades]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{C84F5521-F8A2-4AC4-9E21-313BE3D2C55E}"
+      DTS:ObjectName="JIHEN\JIIHEN.db_recetteRades">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=JIHEN\JIIHEN;Initial Catalog=db_recetteRades;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8702EB6F-562D-4E86-9184-B4854D33EE4D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2016; © 2015 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{58F6CF82-1ABF-4B78-804C-CF743E169438}"
+          SQLTask:BypassPrepare="False"
+          SQLTask:SqlStatementSource="delete from SituationArticle" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Tâche de flux de données"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Tâche de flux de données"
+      DTS:DTSID="{2C9DCCCC-8797-4540-9959-567977F75588}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Tâche de flux de données"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Tâche de flux de données\Conversion situation article"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Conversion de données;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Conversion de données"
+              name="Conversion situation article"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Tâche de flux de données\Conversion situation article.Inputs[Entrée de conversion de données]"
+                  name="Entrée de conversion de données">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Conversion situation article.Inputs[Entrée de conversion de données].Columns[CODE_ARTICLE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="CODE_ARTICLE"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[CODE_ARTICLE]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Conversion situation article.Inputs[Entrée de conversion de données].Columns[CODE_COMMUNE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="CODE_COMMUNE"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[CODE_COMMUNE]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Conversion situation article.Inputs[Entrée de conversion de données].Columns[ANNEE_EXERCICE]"
+                      cachedDataType="i2"
+                      cachedName="ANNEE_EXERCICE"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[ANNEE_EXERCICE]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Conversion situation article.Inputs[Entrée de conversion de données].Columns[Montant1]"
+                      cachedDataType="numeric"
+                      cachedName="Montant1"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[Montant1]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Conversion situation article.Inputs[Entrée de conversion de données].Columns[Montant2]"
+                      cachedDataType="numeric"
+                      cachedName="Montant2"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[Montant2]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Conversion situation article.Inputs[Entrée de conversion de données].Columns[Frais]"
+                      cachedDataType="numeric"
+                      cachedName="Frais"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[Frais]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie de conversion de données]"
+                  exclusionGroup="1"
+                  name="Sortie de conversion de données"
+                  synchronousInputId="Package\Tâche de flux de données\Conversion situation article.Inputs[Entrée de conversion de données]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie de conversion de données].Columns[Copy of CODE_ARTICLE]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie de conversion de données].Columns[Copy of CODE_ARTICLE]"
+                      name="Copy of CODE_ARTICLE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie la colonne d'entrée utilisée comme source de données pour la conversion."
+                          name="SourceInputColumnLineageID">#{Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[CODE_ARTICLE]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie de conversion de données].Columns[Copy of CODE_COMMUNE]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie de conversion de données].Columns[Copy of CODE_COMMUNE]"
+                      name="Copy of CODE_COMMUNE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie la colonne d'entrée utilisée comme source de données pour la conversion."
+                          name="SourceInputColumnLineageID">#{Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[CODE_COMMUNE]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie de conversion de données].Columns[Copy of ANNEE_EXERCICE]"
+                      dataType="date"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie de conversion de données].Columns[Copy of ANNEE_EXERCICE]"
+                      name="Copy of ANNEE_EXERCICE"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie la colonne d'entrée utilisée comme source de données pour la conversion."
+                          name="SourceInputColumnLineageID">#{Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[ANNEE_EXERCICE]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie de conversion de données].Columns[Copy of Montant1]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie de conversion de données].Columns[Copy of Montant1]"
+                      name="Copy of Montant1"
+                      precision="18"
+                      scale="3"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie la colonne d'entrée utilisée comme source de données pour la conversion."
+                          name="SourceInputColumnLineageID">#{Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[Montant1]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie de conversion de données].Columns[Copy of Montant2]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie de conversion de données].Columns[Copy of Montant2]"
+                      name="Copy of Montant2"
+                      precision="18"
+                      scale="3"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie la colonne d'entrée utilisée comme source de données pour la conversion."
+                          name="SourceInputColumnLineageID">#{Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[Montant2]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie de conversion de données].Columns[Copy of Frais]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie de conversion de données].Columns[Copy of Frais]"
+                      name="Copy of Frais"
+                      precision="18"
+                      scale="3"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie la colonne d'entrée utilisée comme source de données pour la conversion."
+                          name="SourceInputColumnLineageID">#{Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[Frais]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indique si la colonne utilise les routines d'analyse les plus rapides, avec des paramètres régionaux neutres."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie d'erreur de conversion de données]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de conversion de données"
+                  synchronousInputId="Package\Tâche de flux de données\Conversion situation article.Inputs[Entrée de conversion de données]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie d'erreur de conversion de données].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tâche de flux de données\Destination OLE DB"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="Destination OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;4"
+              description="Destination OLE DB"
+              name="Destination OLE DB"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[SituationArticle]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs fournies pour les colonnes d'identité seront copiées à la destination. Si la valeur est définie à False, les valeurs des colonnes d'identité seront générées automatiquement à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les colonnes contenant la valeur NULL auront cette valeur NULL copiée à la destination. Si la valeur est définie à False, les colonnes contenant la valeur NULL auront leurs valeurs par défaut insérées à la destination. Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie les options à utiliser avec le chargement rapide.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie quand les validations sont émises pendant l'insertion des données.  Une valeur égale à 0 spécifie qu'une validation sera émise à la fin de l'insertion des données.  Ne s'applique que si le chargement rapide est activé."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tâche de flux de données\Destination OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[JIHEN\JIIHEN.BIProjet]"
+                  connectionManagerRefId="Package.ConnectionManagers[JIHEN\JIIHEN.BIProjet]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+                  errorOrTruncationOperation="Insérer"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Entrée de destination OLE DB">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Copy of Montant1]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of Montant1"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[montant1]"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Copy of Montant1]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Copy of Montant2]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of Montant2"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[montant2]"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Copy of Montant2]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Copy of Frais]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of Frais"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[frais]"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Copy of Frais]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Copy of ANNEE_EXERCICE]"
+                      cachedDataType="date"
+                      cachedName="Copy of ANNEE_EXERCICE"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[annee]"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Copy of ANNEE_EXERCICE]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Copy of CODE_COMMUNE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of CODE_COMMUNE"
+                      cachedSortKeyPosition="2"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[codeCommune]"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Copy of CODE_COMMUNE]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB].Columns[Copy of CODE_ARTICLE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of CODE_ARTICLE"
+                      cachedSortKeyPosition="1"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[codeArticle]"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Copy of CODE_ARTICLE]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[codeCommune]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      name="codeCommune" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[codeArticle]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      name="codeArticle" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[montant1]"
+                      dataType="numeric"
+                      name="montant1"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[montant2]"
+                      dataType="numeric"
+                      name="montant2"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[annee]"
+                      dataType="dbDate"
+                      name="annee" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB].ExternalColumns[frais]"
+                      codePage="1256"
+                      dataType="str"
+                      length="200"
+                      name="frais" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tâche de flux de données\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de destination OLE DB"
+                  synchronousInputId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tâche de flux de données\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tâche de flux de données\Destination OLE DB.Outputs[Sortie d'erreur de destination OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tâche de flux de données\Fractionnement conditionnel"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Fractionnement conditionnel;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;0"
+              description="Achemine des lignes de données vers différentes sorties, selon le contexte des données. Utilisez des conditions (expressions SSIS) pour spécifier les lignes qui seront acheminées. Par exemple, séparez les enregistrements qui doivent être nettoyés de ceux qui sont prêts à être chargés ou acheminez uniquement un sous-ensemble d'enregistrements."
+              name="Fractionnement conditionnel"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Tâche de flux de données\Fractionnement conditionnel.Inputs[Entrée de fractionnement conditionnel]"
+                  description="Entrée vers la transformation de fractionnement conditionnel"
+                  name="Entrée de fractionnement conditionnel">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Fractionnement conditionnel.Inputs[Entrée de fractionnement conditionnel].Columns[CODE_ARTICLE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="CODE_ARTICLE"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[CODE_ARTICLE]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Fractionnement conditionnel.Inputs[Entrée de fractionnement conditionnel].Columns[CODE_COMMUNE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="CODE_COMMUNE"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[CODE_COMMUNE]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Fractionnement conditionnel.Inputs[Entrée de fractionnement conditionnel].Columns[ANNEE_EXERCICE]"
+                      cachedDataType="i2"
+                      cachedName="ANNEE_EXERCICE"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[ANNEE_EXERCICE]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tâche de flux de données\Fractionnement conditionnel.Outputs[Case 1]"
+                  description="Sortie 1 de la transformation de fractionnement conditionnel"
+                  errorOrTruncationOperation="Calcul"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Case 1"
+                  synchronousInputId="Package\Tâche de flux de données\Fractionnement conditionnel.Inputs[Entrée de fractionnement conditionnel]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Spécifie l'expression. Cette version d'expression utilise les identificateurs de lignage à la place des noms de colonnes."
+                      name="Expression">![ISNULL](#{Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[CODE_ARTICLE]}) &amp;&amp; ![ISNULL](#{Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[CODE_COMMUNE]}) &amp;&amp; ![ISNULL](#{Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[ANNEE_EXERCICE]})</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Spécifie la version claire de l'expression. Cette version d'expression utilise les noms de colonnes."
+                      expressionType="Notify"
+                      name="FriendlyExpression">!ISNULL(CODE_ARTICLE) &amp;&amp; !ISNULL(CODE_COMMUNE) &amp;&amp; !ISNULL(ANNEE_EXERCICE)</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Spécifie la position de la condition dans la liste des conditions que la transformation évalue. L'ordre d'évaluation se fait par ordre croissant de valeur."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tâche de flux de données\Fractionnement conditionnel.Outputs[Sortie par défaut de fractionnement conditionnel]"
+                  description="Sortie par défaut de la transformation de fractionnement conditionnel"
+                  exclusionGroup="1"
+                  name="Sortie par défaut de fractionnement conditionnel"
+                  synchronousInputId="Package\Tâche de flux de données\Fractionnement conditionnel.Inputs[Entrée de fractionnement conditionnel]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Tâche de flux de données\Fractionnement conditionnel.Outputs[Sortie d'erreur de fractionnement conditionnel]"
+                  description="Sortie d'erreur de la transformation de fractionnement conditionnel"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de fractionnement conditionnel"
+                  synchronousInputId="Package\Tâche de flux de données\Fractionnement conditionnel.Inputs[Entrée de fractionnement conditionnel]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Fractionnement conditionnel.Outputs[Sortie d'erreur de fractionnement conditionnel].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tâche de flux de données\Fractionnement conditionnel.Outputs[Sortie d'erreur de fractionnement conditionnel].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Fractionnement conditionnel.Outputs[Sortie d'erreur de fractionnement conditionnel].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tâche de flux de données\Fractionnement conditionnel.Outputs[Sortie d'erreur de fractionnement conditionnel].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tâche de flux de données\Jointure de fusion"
+              componentClassID="Microsoft.MergeJoin"
+              contactInfo="Jointure de fusion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;1"
+              description="Combine deux flux de données triés en un seul à l'aide de la jointure FULL, LEFT ou INNER. Nous recommandons cette transformation lorsque les flux de données peuvent être triés au niveau de leurs sources."
+              name="Jointure de fusion"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le type de jointure à effectuer."
+                  name="JoinType"
+                  typeConverter="JoinType">2</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le nombre de colonnes dans la clé de tri."
+                  name="NumKeyColumns">2</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si les valeurs NULL sont traitées comme valeurs égales."
+                  name="TreatNullsAsEqual">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="Indique le nombre maximal de mémoires tampons demandées par entrée avant blocage."
+                  name="MaxBuffersPerInput">5</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion]"
+                  hasSideEffects="true"
+                  name="Entrée gauche de jointure de fusion">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Copy of CODE_ARTICLE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of CODE_ARTICLE"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Copy of CODE_ARTICLE]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Copy of CODE_COMMUNE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of CODE_COMMUNE"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Copy of CODE_COMMUNE]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[CODE_ARTICLE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="CODE_ARTICLE"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[CODE_ARTICLE]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[CODE_COMMUNE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="CODE_COMMUNE"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[CODE_COMMUNE]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[ANNEE_EXERCICE]"
+                      cachedDataType="i2"
+                      cachedName="ANNEE_EXERCICE"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[ANNEE_EXERCICE]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Montant1]"
+                      cachedDataType="numeric"
+                      cachedName="Montant1"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Montant1]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Montant2]"
+                      cachedDataType="numeric"
+                      cachedName="Montant2"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Montant2]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Frais]"
+                      cachedDataType="numeric"
+                      cachedName="Frais"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Frais]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Copy of ANNEE_EXERCICE]"
+                      cachedDataType="date"
+                      cachedName="Copy of ANNEE_EXERCICE"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Copy of ANNEE_EXERCICE]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Copy of Montant1]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of Montant1"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Copy of Montant1]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Copy of Montant2]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of Montant2"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Copy of Montant2]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Copy of Frais]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of Frais"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Copy of Frais]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion]"
+                  hasSideEffects="true"
+                  name="Entrée droite de jointure de fusion">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion].Columns[CodeArcticle]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CodeArcticle"
+                      cachedSortKeyPosition="1"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[CodeArcticle]" />
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion].Columns[CODE_COMMUNE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CODE_COMMUNE"
+                      cachedSortKeyPosition="2"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[CODE_COMMUNE]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion]"
+                  isSorted="true"
+                  name="Sortie de jointure de fusion">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[CODE_ARTICLE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[CODE_ARTICLE]"
+                      name="CODE_ARTICLE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[CODE_ARTICLE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[CODE_COMMUNE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[CODE_COMMUNE]"
+                      name="CODE_COMMUNE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[CODE_COMMUNE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[ANNEE_EXERCICE]"
+                      dataType="i2"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[ANNEE_EXERCICE]"
+                      name="ANNEE_EXERCICE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[ANNEE_EXERCICE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Montant1]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Montant1]"
+                      name="Montant1"
+                      precision="18"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Montant1]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Montant2]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Montant2]"
+                      name="Montant2"
+                      precision="18"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Montant2]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Frais]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Frais]"
+                      name="Frais"
+                      precision="18"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Frais]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Copy of CODE_ARTICLE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Copy of CODE_ARTICLE]"
+                      name="Copy of CODE_ARTICLE"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Copy of CODE_ARTICLE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Copy of CODE_COMMUNE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Copy of CODE_COMMUNE]"
+                      name="Copy of CODE_COMMUNE"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Copy of CODE_COMMUNE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Copy of ANNEE_EXERCICE]"
+                      dataType="date"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Copy of ANNEE_EXERCICE]"
+                      name="Copy of ANNEE_EXERCICE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Copy of ANNEE_EXERCICE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Copy of Montant1]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Copy of Montant1]"
+                      name="Copy of Montant1"
+                      precision="18"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Copy of Montant1]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Copy of Montant2]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Copy of Montant2]"
+                      name="Copy of Montant2"
+                      precision="18"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Copy of Montant2]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Copy of Frais]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion].Columns[Copy of Frais]"
+                      name="Copy of Frais"
+                      precision="18"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Colonne d'entrée associée à cette colonne de sortie"
+                          name="InputColumnID">#{Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion].Columns[Copy of Frais]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tâche de flux de données\situation article Rades"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="situation article Rades"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Ligne_Situation_Article]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tâche de flux de données\situation article Rades.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[JIHEN\JIIHEN.db_recetteRades]"
+                  connectionManagerRefId="Package.ConnectionManagers[JIHEN\JIIHEN.db_recetteRades]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[CODE_ARTICLE]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[CODE_ARTICLE]"
+                      length="12"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[CODE_ARTICLE]"
+                      name="CODE_ARTICLE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[CODE_COMMUNE]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[CODE_COMMUNE]"
+                      length="5"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[CODE_COMMUNE]"
+                      name="CODE_COMMUNE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[ANNEE_EXERCICE]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[ANNEE_EXERCICE]"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[ANNEE_EXERCICE]"
+                      name="ANNEE_EXERCICE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[Montant1]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[Montant1]"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[Montant1]"
+                      name="Montant1"
+                      precision="18"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[Montant2]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[Montant2]"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[Montant2]"
+                      name="Montant2"
+                      precision="18"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[Frais]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[Frais]"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[Frais]"
+                      name="Frais"
+                      precision="18"
+                      scale="3"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[CODE_ARTICLE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="12"
+                      name="CODE_ARTICLE" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[CODE_COMMUNE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="5"
+                      name="CODE_COMMUNE" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[ANNEE_EXERCICE]"
+                      dataType="i2"
+                      name="ANNEE_EXERCICE" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[PERIODE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="1"
+                      name="PERIODE" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[OrdrePer]"
+                      dataType="i2"
+                      name="OrdrePer" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[NumLigne]"
+                      dataType="i4"
+                      name="NumLigne" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[TYPE_SOURCE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="1"
+                      name="TYPE_SOURCE" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[CODE_SOURCE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="10"
+                      name="CODE_SOURCE" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[LIGNE_SOURCE]"
+                      dataType="i4"
+                      name="LIGNE_SOURCE" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[DATE_ECHEANCE_PERIODE]"
+                      dataType="dbTimeStamp"
+                      name="DATE_ECHEANCE_PERIODE" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[DATE_CONSTATION]"
+                      dataType="dbTimeStamp"
+                      name="DATE_CONSTATION" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[Montant1]"
+                      dataType="numeric"
+                      name="Montant1"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[Montant2]"
+                      dataType="numeric"
+                      name="Montant2"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[Montant3]"
+                      dataType="numeric"
+                      name="Montant3"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[Frais]"
+                      dataType="numeric"
+                      name="Frais"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[MontantPay1]"
+                      dataType="numeric"
+                      name="MontantPay1"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[MontantPay2]"
+                      dataType="numeric"
+                      name="MontantPay2"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[MontantPay3]"
+                      dataType="numeric"
+                      name="MontantPay3"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[MontantDeg1]"
+                      dataType="numeric"
+                      name="MontantDeg1"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[MontantDeg2]"
+                      dataType="numeric"
+                      name="MontantDeg2"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[MontantDeg3]"
+                      dataType="numeric"
+                      name="MontantDeg3"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[MontantRev1]"
+                      dataType="numeric"
+                      name="MontantRev1"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[MontantRev2]"
+                      dataType="numeric"
+                      name="MontantRev2"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[MontantRev3]"
+                      dataType="numeric"
+                      name="MontantRev3"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[FraisPay]"
+                      dataType="numeric"
+                      name="FraisPay"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[LAST_QUITTANCE]"
+                      dataType="i4"
+                      name="LAST_QUITTANCE" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[ANNEE_LAST_QUITTANCE]"
+                      dataType="i2"
+                      name="ANNEE_LAST_QUITTANCE" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[IN_CALENDRIER]"
+                      dataType="bool"
+                      name="IN_CALENDRIER" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[DateEch]"
+                      dataType="dbTimeStamp"
+                      name="DateEch" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[DateAvisRec]"
+                      dataType="dbTimeStamp"
+                      name="DateAvisRec" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[Etat]"
+                      dataType="ui1"
+                      name="Etat" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[DATE_ETAT]"
+                      dataType="dbTimeStamp"
+                      name="DATE_ETAT" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[EtatPourSuiteTemp]"
+                      codePage="1256"
+                      dataType="str"
+                      length="2"
+                      name="EtatPourSuiteTemp" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[EtatPourSuite]"
+                      codePage="1256"
+                      dataType="str"
+                      length="2"
+                      name="EtatPourSuite" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[DateEtatPourSuite]"
+                      dataType="dbTimeStamp"
+                      name="DateEtatPourSuite" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[ATRANS]"
+                      dataType="bool"
+                      name="ATRANS" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[MarsMnt1]"
+                      dataType="numeric"
+                      name="MarsMnt1"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[MarsMnt2]"
+                      dataType="numeric"
+                      name="MarsMnt2"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[IN_AMNISTIE]"
+                      dataType="bool"
+                      name="IN_AMNISTIE" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[AnnuleFrais]"
+                      dataType="numeric"
+                      name="AnnuleFrais"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[FraisAvAmnistie]"
+                      dataType="numeric"
+                      name="FraisAvAmnistie"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[AnnuleMnt1]"
+                      dataType="numeric"
+                      name="AnnuleMnt1"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[AnnuleMnt2]"
+                      dataType="numeric"
+                      name="AnnuleMnt2"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[DATE_AMNISTIE]"
+                      dataType="dbTimeStamp"
+                      name="DATE_AMNISTIE" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[RESTE_MONTANT1]"
+                      dataType="numeric"
+                      name="RESTE_MONTANT1"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[RESTE_MONTANT2]"
+                      dataType="numeric"
+                      name="RESTE_MONTANT2"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[RESTE_MONTANT3]"
+                      dataType="numeric"
+                      name="RESTE_MONTANT3"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[RESTE_FRAIS]"
+                      dataType="numeric"
+                      name="RESTE_FRAIS"
+                      precision="18"
+                      scale="3" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].ExternalColumns[RESTE]"
+                      dataType="numeric"
+                      name="RESTE"
+                      precision="21"
+                      scale="3" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie d'erreur de source OLE DB].Columns[CODE_ARTICLE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie d'erreur de source OLE DB].Columns[CODE_ARTICLE]"
+                      name="CODE_ARTICLE" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie d'erreur de source OLE DB].Columns[CODE_COMMUNE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie d'erreur de source OLE DB].Columns[CODE_COMMUNE]"
+                      name="CODE_COMMUNE" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie d'erreur de source OLE DB].Columns[ANNEE_EXERCICE]"
+                      dataType="i2"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie d'erreur de source OLE DB].Columns[ANNEE_EXERCICE]"
+                      name="ANNEE_EXERCICE" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie d'erreur de source OLE DB].Columns[Montant1]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie d'erreur de source OLE DB].Columns[Montant1]"
+                      name="Montant1"
+                      precision="18"
+                      scale="3" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie d'erreur de source OLE DB].Columns[Montant2]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie d'erreur de source OLE DB].Columns[Montant2]"
+                      name="Montant2"
+                      precision="18"
+                      scale="3" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie d'erreur de source OLE DB].Columns[Frais]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie d'erreur de source OLE DB].Columns[Frais]"
+                      name="Frais"
+                      precision="18"
+                      scale="3" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tâche de flux de données\Source OLE DB"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="Source OLE DB;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;7"
+              description="Source OLE DB"
+              name="Source OLE DB"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="Nombre de secondes avant l'expiration d'une commande.  Une valeur égale à 0 indique un délai d'expiration infini."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowset">[dbo].[Article]</property>
+                <property
+                  dataType="System.String"
+                  description="Spécifie la variable contenant le nom de l'objet de base de données utilisé pour ouvrir un ensemble de lignes."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="Commande SQL à exécuter."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="Variable contenant la commande SQL à exécuter."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie la page de codes de la colonne à utiliser lorsque les informations de page de codes ne sont pas disponibles à partir de la source de données."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Force l'utilisation de la valeur de propriété DefaultCodePage lors de la description des données caractères."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le mode utilisé pour accéder à la base de données."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="Mappages entre les paramètres de la commande SQL et les variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Tâche de flux de données\Source OLE DB.Connections[OleDbConnection]"
+                  connectionManagerID="Package.ConnectionManagers[JIHEN\JIIHEN.BIProjet]"
+                  connectionManagerRefId="Package.ConnectionManagers[JIHEN\JIIHEN.BIProjet]"
+                  description="Connexion OLE DB en cours d'exécution utilisée pour accéder à la base de données."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB]"
+                  name="Sortie de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CodeArcticle]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[CodeArcticle]"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CodeArcticle]"
+                      name="CodeArcticle"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CodeRedevable]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[CodeRedevable]"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CodeRedevable]"
+                      name="CodeRedevable"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CODE_COMMUNE]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[CODE_COMMUNE]"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CODE_COMMUNE]"
+                      name="CODE_COMMUNE"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[codeRue]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[codeRue]"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[codeRue]"
+                      name="codeRue"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[codeType]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[codeType]"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[codeType]"
+                      name="codeType"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[mntTIB]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[mntTIB]"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[mntTIB]"
+                      name="mntTIB"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[mntFNAH]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[mntFNAH]"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[mntFNAH]"
+                      name="mntFNAH"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[mntTaxe]"
+                      dataType="r8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[mntTaxe]"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[mntTaxe]"
+                      name="mntTaxe"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[adresse]"
+                      codePage="1256"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[adresse]"
+                      length="200"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[adresse]"
+                      name="adresse"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[CodeArcticle]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      name="CodeArcticle" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[CodeRedevable]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      name="CodeRedevable" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[CODE_COMMUNE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      name="CODE_COMMUNE" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[codeRue]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      name="codeRue" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[codeType]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      name="codeType" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[mntTIB]"
+                      dataType="r8"
+                      name="mntTIB" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[mntFNAH]"
+                      dataType="r8"
+                      name="mntFNAH" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[mntTaxe]"
+                      dataType="r8"
+                      name="mntTaxe" />
+                    <externalMetadataColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].ExternalColumns[adresse]"
+                      codePage="1256"
+                      dataType="str"
+                      length="200"
+                      name="adresse" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB]"
+                  isErrorOut="true"
+                  name="Sortie d'erreur de source OLE DB">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[CodeArcticle]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[CodeArcticle]"
+                      name="CodeArcticle" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[CodeRedevable]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[CodeRedevable]"
+                      name="CodeRedevable" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[CODE_COMMUNE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[CODE_COMMUNE]"
+                      name="CODE_COMMUNE" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[codeRue]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[codeRue]"
+                      name="codeRue" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[codeType]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[codeType]"
+                      name="codeType" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[mntTIB]"
+                      dataType="r8"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[mntTIB]"
+                      name="mntTIB" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[mntFNAH]"
+                      dataType="r8"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[mntFNAH]"
+                      name="mntFNAH" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[mntTaxe]"
+                      dataType="r8"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[mntTaxe]"
+                      name="mntTaxe" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[adresse]"
+                      codePage="1256"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[adresse]"
+                      name="adresse" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie d'erreur de source OLE DB].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tâche de flux de données\Trier"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Trier;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;1"
+              description="Trie les données d'entrée en ordre croissant ou décroissant lorsque le tri ne peut pas être effectué à la source. Par exemple, triez les données de vente par 'id de client' avant leur enregistrement dans un fichier plat et leur diffusion dans un autre service. Remarque : nous ne recommandons pas cette transformation dans le cas de flux de données volumineux."
+              name="Trier"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si la transformation de tri supprime les lignes comportant des valeurs de tri en double."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le nombre maximal de threads à utiliser pour le tri."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Tâche de flux de données\Trier.Inputs[Entrée de tri]"
+                  name="Entrée de tri">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier.Inputs[Entrée de tri].Columns[CODE_ARTICLE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="CODE_ARTICLE"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[CODE_ARTICLE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier.Inputs[Entrée de tri].Columns[CODE_COMMUNE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="CODE_COMMUNE"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[CODE_COMMUNE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier.Inputs[Entrée de tri].Columns[ANNEE_EXERCICE]"
+                      cachedDataType="i2"
+                      cachedName="ANNEE_EXERCICE"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[ANNEE_EXERCICE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier.Inputs[Entrée de tri].Columns[Montant1]"
+                      cachedDataType="numeric"
+                      cachedName="Montant1"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Montant1]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier.Inputs[Entrée de tri].Columns[Montant2]"
+                      cachedDataType="numeric"
+                      cachedName="Montant2"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Montant2]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier.Inputs[Entrée de tri].Columns[Frais]"
+                      cachedDataType="numeric"
+                      cachedName="Frais"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Frais]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier.Inputs[Entrée de tri].Columns[Copy of CODE_ARTICLE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of CODE_ARTICLE"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of CODE_ARTICLE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier.Inputs[Entrée de tri].Columns[Copy of CODE_COMMUNE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of CODE_COMMUNE"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of CODE_COMMUNE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier.Inputs[Entrée de tri].Columns[Copy of ANNEE_EXERCICE]"
+                      cachedDataType="date"
+                      cachedName="Copy of ANNEE_EXERCICE"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of ANNEE_EXERCICE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier.Inputs[Entrée de tri].Columns[Copy of Montant1]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of Montant1"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of Montant1]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier.Inputs[Entrée de tri].Columns[Copy of Montant2]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of Montant2"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of Montant2]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier.Inputs[Entrée de tri].Columns[Copy of Frais]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of Frais"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of Frais]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri]"
+                  isSorted="true"
+                  name="Sortie de tri">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[CODE_ARTICLE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[CODE_ARTICLE]"
+                      name="CODE_ARTICLE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[CODE_ARTICLE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[CODE_COMMUNE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[CODE_COMMUNE]"
+                      name="CODE_COMMUNE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[CODE_COMMUNE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[ANNEE_EXERCICE]"
+                      dataType="i2"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[ANNEE_EXERCICE]"
+                      name="ANNEE_EXERCICE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[ANNEE_EXERCICE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Montant1]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Montant1]"
+                      name="Montant1"
+                      precision="18"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Montant1]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Montant2]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Montant2]"
+                      name="Montant2"
+                      precision="18"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Montant2]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Frais]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Frais]"
+                      name="Frais"
+                      precision="18"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Frais]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Copy of CODE_ARTICLE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Copy of CODE_ARTICLE]"
+                      name="Copy of CODE_ARTICLE"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of CODE_ARTICLE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Copy of CODE_COMMUNE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Copy of CODE_COMMUNE]"
+                      name="Copy of CODE_COMMUNE"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of CODE_COMMUNE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Copy of ANNEE_EXERCICE]"
+                      dataType="date"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Copy of ANNEE_EXERCICE]"
+                      name="Copy of ANNEE_EXERCICE">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of ANNEE_EXERCICE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Copy of Montant1]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Copy of Montant1]"
+                      name="Copy of Montant1"
+                      precision="18"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of Montant1]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Copy of Montant2]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Copy of Montant2]"
+                      name="Copy of Montant2"
+                      precision="18"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of Montant2]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Copy of Frais]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri].Columns[Copy of Frais]"
+                      name="Copy of Frais"
+                      precision="18"
+                      scale="3">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of Frais]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tâche de flux de données\Trier 1"
+              componentClassID="Microsoft.Sort"
+              contactInfo="Trier;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;1"
+              description="Trie les données d'entrée en ordre croissant ou décroissant lorsque le tri ne peut pas être effectué à la source. Par exemple, triez les données de vente par 'id de client' avant leur enregistrement dans un fichier plat et leur diffusion dans un autre service. Remarque : nous ne recommandons pas cette transformation dans le cas de flux de données volumineux."
+              name="Trier 1"
+              version="1">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  description="Indique si la transformation de tri supprime les lignes comportant des valeurs de tri en double."
+                  name="EliminateDuplicates">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Spécifie le nombre maximal de threads à utiliser pour le tri."
+                  expressionType="Notify"
+                  name="MaximumThreads">-1</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri]"
+                  name="Entrée de tri">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri].Columns[CodeArcticle]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CodeArcticle"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CodeArcticle]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">1</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri].Columns[CodeRedevable]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CodeRedevable"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CodeRedevable]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri].Columns[CODE_COMMUNE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="CODE_COMMUNE"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CODE_COMMUNE]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">2</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri].Columns[codeRue]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="codeRue"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[codeRue]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri].Columns[codeType]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="codeType"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[codeType]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri].Columns[mntTIB]"
+                      cachedDataType="r8"
+                      cachedName="mntTIB"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[mntTIB]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri].Columns[mntFNAH]"
+                      cachedDataType="r8"
+                      cachedName="mntFNAH"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[mntFNAH]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri].Columns[mntTaxe]"
+                      cachedDataType="r8"
+                      cachedName="mntTaxe"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[mntTaxe]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri].Columns[adresse]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="adresse"
+                      lineageId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[adresse]">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie les options de comparaison pour les données caractères."
+                          name="NewComparisonFlags">0</property>
+                        <property
+                          dataType="System.Int32"
+                          description="Spécifie l'ordre de tri de la colonne."
+                          name="NewSortKeyPosition">0</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri]"
+                  isSorted="true"
+                  name="Sortie de tri">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[CodeArcticle]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[CodeArcticle]"
+                      name="CodeArcticle"
+                      sortKeyPosition="1">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CodeArcticle]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[CodeRedevable]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[CodeRedevable]"
+                      name="CodeRedevable">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CodeRedevable]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[CODE_COMMUNE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[CODE_COMMUNE]"
+                      name="CODE_COMMUNE"
+                      sortKeyPosition="2">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[CODE_COMMUNE]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[codeRue]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[codeRue]"
+                      name="codeRue">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[codeRue]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[codeType]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[codeType]"
+                      name="codeType">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[codeType]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[mntTIB]"
+                      dataType="r8"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[mntTIB]"
+                      name="mntTIB">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[mntTIB]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[mntFNAH]"
+                      dataType="r8"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[mntFNAH]"
+                      name="mntFNAH">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[mntFNAH]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[mntTaxe]"
+                      dataType="r8"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[mntTaxe]"
+                      name="mntTaxe">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[mntTaxe]}</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[adresse]"
+                      codePage="1256"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri].Columns[adresse]"
+                      name="adresse">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Spécifie l'identificateur de lignage de la colonne d'entrée associé à cette colonne de sortie."
+                          name="SortColumnId">#{Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB].Columns[adresse]}</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Tâche de flux de données\Unir tout"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Unir tout;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; Tous droits réservés; http://www.microsoft.com/sql/support;1"
+              description="Combine des lignes de plusieurs flux de données sans effectuer de tri. Par exemple, rajoutez des lignes à un flux de données après correction des erreurs. Si le tri est important, nous recommandons l'utilisation de la transformation de fusion."
+              name="Unir tout"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Tâche de flux de données\Unir tout.Inputs[Unir tout entrée 1]"
+                  name="Unir tout entrée 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Inputs[Unir tout entrée 1].Columns[CODE_ARTICLE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="12"
+                      cachedName="CODE_ARTICLE"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[CODE_ARTICLE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de lignage de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[CODE_ARTICLE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Inputs[Unir tout entrée 1].Columns[CODE_COMMUNE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="5"
+                      cachedName="CODE_COMMUNE"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[CODE_COMMUNE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de lignage de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[CODE_COMMUNE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Inputs[Unir tout entrée 1].Columns[ANNEE_EXERCICE]"
+                      cachedDataType="i2"
+                      cachedName="ANNEE_EXERCICE"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[ANNEE_EXERCICE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de lignage de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[ANNEE_EXERCICE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Inputs[Unir tout entrée 1].Columns[Montant1]"
+                      cachedDataType="numeric"
+                      cachedName="Montant1"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[Montant1]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de lignage de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Montant1]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Inputs[Unir tout entrée 1].Columns[Montant2]"
+                      cachedDataType="numeric"
+                      cachedName="Montant2"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[Montant2]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de lignage de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Montant2]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Inputs[Unir tout entrée 1].Columns[Frais]"
+                      cachedDataType="numeric"
+                      cachedName="Frais"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB].Columns[Frais]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de lignage de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Frais]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Inputs[Unir tout entrée 1].Columns[Copy of CODE_ARTICLE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of CODE_ARTICLE"
+                      lineageId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie de conversion de données].Columns[Copy of CODE_ARTICLE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de lignage de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of CODE_ARTICLE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Inputs[Unir tout entrée 1].Columns[Copy of CODE_COMMUNE]"
+                      cachedCodepage="1256"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Copy of CODE_COMMUNE"
+                      lineageId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie de conversion de données].Columns[Copy of CODE_COMMUNE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de lignage de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of CODE_COMMUNE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Inputs[Unir tout entrée 1].Columns[Copy of ANNEE_EXERCICE]"
+                      cachedDataType="date"
+                      cachedName="Copy of ANNEE_EXERCICE"
+                      lineageId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie de conversion de données].Columns[Copy of ANNEE_EXERCICE]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de lignage de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of ANNEE_EXERCICE]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Inputs[Unir tout entrée 1].Columns[Copy of Montant1]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of Montant1"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie de conversion de données].Columns[Copy of Montant1]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de lignage de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of Montant1]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Inputs[Unir tout entrée 1].Columns[Copy of Montant2]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of Montant2"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie de conversion de données].Columns[Copy of Montant2]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de lignage de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of Montant2]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Inputs[Unir tout entrée 1].Columns[Copy of Frais]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of Frais"
+                      cachedPrecision="18"
+                      cachedScale="3"
+                      lineageId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie de conversion de données].Columns[Copy of Frais]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="ID de lignage de colonne de sortie"
+                          name="OutputColumnLineageID">#{Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of Frais]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Tâche de flux de données\Unir tout.Inputs[Entrée Union All 1]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Entrée Union All 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1]"
+                  name="Unir tout sortie 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[CODE_ARTICLE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="12"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[CODE_ARTICLE]"
+                      name="CODE_ARTICLE" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[CODE_COMMUNE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="5"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[CODE_COMMUNE]"
+                      name="CODE_COMMUNE" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[ANNEE_EXERCICE]"
+                      dataType="i2"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[ANNEE_EXERCICE]"
+                      name="ANNEE_EXERCICE" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Montant1]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Montant1]"
+                      name="Montant1"
+                      precision="18"
+                      scale="3" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Montant2]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Montant2]"
+                      name="Montant2"
+                      precision="18"
+                      scale="3" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Frais]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Frais]"
+                      name="Frais"
+                      precision="18"
+                      scale="3" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of CODE_ARTICLE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of CODE_ARTICLE]"
+                      name="Copy of CODE_ARTICLE" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of CODE_COMMUNE]"
+                      codePage="1256"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of CODE_COMMUNE]"
+                      name="Copy of CODE_COMMUNE" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of ANNEE_EXERCICE]"
+                      dataType="date"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of ANNEE_EXERCICE]"
+                      name="Copy of ANNEE_EXERCICE" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of Montant1]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of Montant1]"
+                      name="Copy of Montant1"
+                      precision="18"
+                      scale="3" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of Montant2]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of Montant2]"
+                      name="Copy of Montant2"
+                      precision="18"
+                      scale="3" />
+                    <outputColumn
+                      refId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of Frais]"
+                      dataType="numeric"
+                      lineageId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1].Columns[Copy of Frais]"
+                      name="Copy of Frais"
+                      precision="18"
+                      scale="3" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Tâche de flux de données.Paths[Case 1]"
+              endId="Package\Tâche de flux de données\Destination OLE DB.Inputs[Entrée de destination OLE DB]"
+              name="Case 1"
+              startId="Package\Tâche de flux de données\Fractionnement conditionnel.Outputs[Case 1]" />
+            <path
+              refId="Package\Tâche de flux de données.Paths[Sortie de conversion de données]"
+              endId="Package\Tâche de flux de données\Unir tout.Inputs[Unir tout entrée 1]"
+              name="Sortie de conversion de données"
+              startId="Package\Tâche de flux de données\Conversion situation article.Outputs[Sortie de conversion de données]" />
+            <path
+              refId="Package\Tâche de flux de données.Paths[Sortie de jointure de fusion]"
+              endId="Package\Tâche de flux de données\Fractionnement conditionnel.Inputs[Entrée de fractionnement conditionnel]"
+              name="Sortie de jointure de fusion"
+              startId="Package\Tâche de flux de données\Jointure de fusion.Outputs[Sortie de jointure de fusion]" />
+            <path
+              refId="Package\Tâche de flux de données.Paths[Sortie de source OLE DB]"
+              endId="Package\Tâche de flux de données\Conversion situation article.Inputs[Entrée de conversion de données]"
+              name="Sortie de source OLE DB"
+              startId="Package\Tâche de flux de données\situation article Rades.Outputs[Sortie de source OLE DB]" />
+            <path
+              refId="Package\Tâche de flux de données.Paths[Sortie de source OLE DB1]"
+              endId="Package\Tâche de flux de données\Trier 1.Inputs[Entrée de tri]"
+              name="Sortie de source OLE DB"
+              startId="Package\Tâche de flux de données\Source OLE DB.Outputs[Sortie de source OLE DB]" />
+            <path
+              refId="Package\Tâche de flux de données.Paths[Sortie de tri]"
+              endId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée droite de jointure de fusion]"
+              name="Sortie de tri"
+              startId="Package\Tâche de flux de données\Trier 1.Outputs[Sortie de tri]" />
+            <path
+              refId="Package\Tâche de flux de données.Paths[Sortie de tri1]"
+              endId="Package\Tâche de flux de données\Jointure de fusion.Inputs[Entrée gauche de jointure de fusion]"
+              name="Sortie de tri"
+              startId="Package\Tâche de flux de données\Trier.Outputs[Sortie de tri]" />
+            <path
+              refId="Package\Tâche de flux de données.Paths[Unir tout sortie 1]"
+              endId="Package\Tâche de flux de données\Trier.Inputs[Entrée de tri]"
+              name="Unir tout sortie 1"
+              startId="Package\Tâche de flux de données\Unir tout.Outputs[Unir tout sortie 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{2B064F61-427F-4D86-B902-9FC74C45C486}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Tâche de flux de données" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Execute SQL Task"
+          TopLeft="93,54" />
+        <NodeLayout
+          Size="200,42"
+          Id="Package\Tâche de flux de données"
+          TopLeft="209,155" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="174.5,96">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="134.5,59"
+              Start="0,0"
+              End="134.5,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.5"
+                    Point2="0,29.5"
+                    Point3="4,29.5" />
+                  <mssgle:LineSegment
+                    End="130.5,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="130.5,29.5"
+                    Point2="134.5,29.5"
+                    Point3="134.5,33.5" />
+                  <mssgle:LineSegment
+                    End="134.5,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Tâche de flux de données">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="183,42"
+          Id="Package\Tâche de flux de données\situation article Rades"
+          TopLeft="241,0" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\Tâche de flux de données\Conversion situation article"
+          TopLeft="236,70" />
+        <EdgeLayout
+          Id="Package\Tâche de flux de données.Paths[Sortie de source OLE DB]"
+          TopLeft="335.75,42">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,28"
+              Start="0,0"
+              End="0,20.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,20.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Tâche de flux de données\Destination OLE DB"
+          TopLeft="334,576" />
+        <NodeLayout
+          Size="120,42"
+          Id="Package\Tâche de flux de données\Unir tout"
+          TopLeft="300,138" />
+        <EdgeLayout
+          Id="Package\Tâche de flux de données.Paths[Sortie de conversion de données]"
+          TopLeft="339,112">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="21,26"
+              Start="0,0"
+              End="21,18.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9"
+                    Point2="0,13"
+                    Point3="4,13" />
+                  <mssgle:LineSegment
+                    End="17,13" />
+                  <mssgle:CubicBezierSegment
+                    Point1="17,13"
+                    Point2="21,13"
+                    Point3="21,17" />
+                  <mssgle:LineSegment
+                    End="21,18.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="212,42"
+          Id="Package\Tâche de flux de données\Fractionnement conditionnel"
+          TopLeft="439,373" />
+        <EdgeLayout
+          Id="Package\Tâche de flux de données.Paths[Case 1]"
+          TopLeft="545,415">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-125.5,161"
+              Start="0,0"
+              End="-125.5,153.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,76.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,76.5"
+                    Point2="0,80.5"
+                    Point3="-4,80.5" />
+                  <mssgle:LineSegment
+                    End="-121.5,80.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-121.5,80.5"
+                    Point2="-125.5,80.5"
+                    Point3="-125.5,84.5" />
+                  <mssgle:LineSegment
+                    End="-125.5,153.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-77.9680859375,85.5,30.436171875,9.5537109375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="163,42"
+          Id="Package\Tâche de flux de données\Jointure de fusion"
+          TopLeft="504,200" />
+        <NodeLayout
+          Size="150,42"
+          Id="Package\Tâche de flux de données\Source OLE DB"
+          TopLeft="585,54" />
+        <NodeLayout
+          Size="101,42"
+          Id="Package\Tâche de flux de données\Trier"
+          TopLeft="329,195" />
+        <EdgeLayout
+          Id="Package\Tâche de flux de données.Paths[Unir tout sortie 1]"
+          TopLeft="360,180">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-31,36"
+              Start="0,0"
+              End="-23.5,36">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,32" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,32"
+                    Point2="0,36"
+                    Point3="-4,36" />
+                  <mssgle:LineSegment
+                    End="-23.5,36" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="110,42"
+          Id="Package\Tâche de flux de données\Trier 1"
+          TopLeft="579,121" />
+        <EdgeLayout
+          Id="Package\Tâche de flux de données.Paths[Sortie de source OLE DB1]"
+          TopLeft="660,96">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-26,25"
+              Start="0,0"
+              End="-26,17.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.5"
+                    Point2="0,12.5"
+                    Point3="-4,12.5" />
+                  <mssgle:LineSegment
+                    End="-22,12.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-22,12.5"
+                    Point2="-26,12.5"
+                    Point3="-26,16.5" />
+                  <mssgle:LineSegment
+                    End="-26,17.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tâche de flux de données.Paths[Sortie de tri]"
+          TopLeft="634,163">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-48.5,37"
+              Start="0,0"
+              End="-48.5,29.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.5"
+                    Point2="0,18.5"
+                    Point3="-4,18.5" />
+                  <mssgle:LineSegment
+                    End="-44.5,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-44.5,18.5"
+                    Point2="-48.5,18.5"
+                    Point3="-48.5,22.5" />
+                  <mssgle:LineSegment
+                    End="-48.5,29.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tâche de flux de données.Paths[Sortie de tri1]"
+          TopLeft="430,218.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="74,0"
+              Start="0,0"
+              End="66.5,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="66.5,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Tâche de flux de données.Paths[Sortie de jointure de fusion]"
+          TopLeft="585.5,242">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-40.5,131"
+              Start="0,0"
+              End="-40.5,123.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,61.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,61.5"
+                    Point2="0,65.5"
+                    Point3="-4,65.5" />
+                  <mssgle:LineSegment
+                    End="-36.5,65.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-36.5,65.5"
+                    Point2="-40.5,65.5"
+                    Point3="-40.5,69.5" />
+                  <mssgle:LineSegment
+                    End="-40.5,123.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tâche de flux de données\situation article Rades">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tâche de flux de données\Destination OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Tâche de flux de données\Source OLE DB">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
